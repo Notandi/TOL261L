@@ -1,0 +1,16 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+table{
+  color: #00B7FF;
+}
+tr:hover{
+  color: black;
+  background-color: #00B7FF;
+}

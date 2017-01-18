@@ -1,0 +1,5 @@
+extends layout
+
+block content
+  each channel in channels
+    p: a(href=channel.endpoint)= channel.name
