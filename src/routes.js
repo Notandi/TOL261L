@@ -26,6 +26,10 @@ router.get('/del', (req, res, next) => {
   fs.unlinkSync('test.mid');
   res.send("removed");
 });
+router.get('/play',(req, res, next) =>{
+  
+  res.send("play");
+});
 
 
 
