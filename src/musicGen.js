@@ -12,15 +12,16 @@ function createPitchList(noNotes, tema, scale, intervalRules, minPitch, maxPitch
   return pitchlist;
 }
 
+// Býr til valid pitch sem að uppfyllir öll skilyrði
 function createValidPitch(scale, intervalRules, minPitch, maxPitch, lastpitch){
   let pitch = randomPitch(minPitch, maxPitch);
-  // búa til random pitch sem að brítur ekki intervalRules og er í scale
   while(!(isMember((pitch%12), scale) && isMember((pitch%12), Math.abs(pitch - lastpitch)))){
     pitch = randomPitch(minPitch, maxPitch);
   }
   return pitch;
 }
 
+// Býr til nokkur random start pitches svo að hægt sé að byrja að búa til pitches til þess að bera saman við tema og bæta við lagið
 function createValidStartPitches(noNotes, scale, intervalRules, minPitch, maxPitch){
   let pitches = [];
   let lastpitch = randomPitch(minPitch, maxPitch);
@@ -37,45 +38,86 @@ function createValidStartPitches(noNotes, scale, intervalRules, minPitch, maxPit
 }
 
 
-
+//Gáir á öllum möguleikum fyrir næsta pitch útfrá intervalRules og skilar þeim sem uppfylla þau skilyrði að vera í scale og undir maxPitch og yfir minPitch
 function createAllValidPitches( scale, intervalRules, minPitch, maxPitch, lastpitch){
-  let pitches = [];
-  
+  let validPitches = [];
+  intervalRules.map((interval) => {
+    let testPitch = lastpitch - interval;
+    if(
+      (isMember((testPitch%12), scale)) & ((testPitch >= minPitch) & (testPitch <= maxPitch))
+    ) validPitches.push(testPitch);
+    testPitch = lastpitch + interval;
+    if(
+      (isMember((testPitch%12), scale)) & ((testPitch >= minPitch) & (testPitch <= maxPitch))
+    ) validPitches.push(testPitch);
+  });
+  removeDuplicates(validPitches);
+  return validPitches;
 }
 
+// Fall sem að fjarlægir duplicate values í fylki
+function removeDuplicates(arr){
+  for(let i = 0; i < arr.length;  i++){
+    for(let j= i + 1; j < arr.length; j++){
+      if (arr[i] === arr[j]) arr.splice(j,1);
+    }
+  }
+  return arr;
+}
+
+// Fall sem að gáir hvort að value komi fyrir í fylki
 function isMember(value, arr){
-  for(var i = 0; i < arr.length; i++){
+  for(let i = 0; i < arr.length; i++){
     if (arr[i] === value) return true;
   }
   return false;
 }
 
+// Fall sem að býr til random pitch á milli minPitch og maxPitch
 function randomPitch(minPitch, maxPitch){
   let pitch = (Math.round(Math.random() * (maxPitch - minPitch))) + minPitch;
   return pitch;
 }
 
-function createAllValidPitches() {
+
+//tema föll
+
+function keppTema(){
+
+}
+
+function temaChecker(){
+
+}
+
+function intervalValue(){
+
+}
+
+function intervalPositionsValue(){
+
+}
+
+function intervalDirectionValue(){
+
+}
+
+function relationValue (){
+
+}
+
+function changeListToTema(){
+
+}
+
+function makeIntervalList(){
 
 }
 
 
+function changeListToTema(){
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 // Býr til attack lista sem að segir til um hvenær á að spila nótu
 function createAttackList(noNotes tema attackMatrix){
