@@ -82,40 +82,51 @@ function randomPitch(minPitch, maxPitch){
 
 //tema föll
 
-function keppTema(){
+// rennur í gegnum allar mögulegar nótur og skilar þeirri sem að er líkust þemanum
+function keepTema(tema, possiblePitches){
+  let chances = []
+  for (let i = 0; i < possiblePitches.length; i++){
+    chances.push(temaChecker(tema, possiblePitches[i]))
+  }
+  return .............
+}
+
+// skilar hversu líkt þetta er þemanum miðað við fjóra mismunandi hluti sem að hafa mismunandi vigtir
+function temaChecker( temalist, notelist){
 
 }
 
-function temaChecker(){
+// skilar gildi frá 0-lengd tema eftir því hversu mörg tónbil eru eins
+function intervalValue( tema, note ){
 
 }
 
-function intervalValue(){
-
-}
-
+// skilar gildi frá 0-lengd tema eftir því hversu mörg tónbil eru eins á sama stað
 function intervalPositionsValue(){
 
 }
 
+// skilar gildi frá 0-lengd tema eftir því hversu mörg tónbilana séu með sömu stefnu
 function intervalDirectionValue(){
 
 }
 
+//skilar gildi eftir skyldleika
 function relationValue (){
 
 }
 
+
 function changeListToTema(){
 
 }
 
-function makeIntervalList(){
+//Markov keðjuföll
+
+function markovValues(){
 
 }
-
-
-function changeListToTema(){
+function markovChain(){
 
 }
 
