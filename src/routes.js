@@ -5,11 +5,11 @@ const router = express.Router();
 
 const fs = require('fs');
 
-router.get('/', (req, res, next) => {
-  var Midi = require('jsmidgen');
+const Midi = require('jsmidgen');
 
-  var file = new Midi.File();
-  var track = new Midi.Track();
+router.get('/', (req, res, next) => {
+  const file = new Midi.File();
+  const track = new Midi.Track();
   file.addTrack(track);
   track.addNote(0, 'c4', 64);
   track.addNote(0, 'd4', 64);
@@ -20,18 +20,17 @@ router.get('/', (req, res, next) => {
   track.addNote(0, 'b4', 64);
   track.addNote(0, 'c5', 64);
   fs.writeFileSync('test.mid', file.toBytes(), 'binary');
-  res.send("added");
+  res.send('added');
 });
+
 router.get('/del', (req, res, next) => {
   fs.unlinkSync('test.mid');
-  res.send("removed");
-});
-router.get('/play',(req, res, next) =>{
-  
-  res.send("play");
+  res.send('removed');
 });
 
-
+router.get('/play', (req, res, next) => {
+  res.send('play');
+});
 
 router.get('*', (req, res, next) => {
   res.status(404).render('message', { message: 'oh no!',
