@@ -6,7 +6,9 @@ function createPitchList(noNotes, tema, scale, intervalRules, minPitch, maxPitch
   let pitch;
   while(noNotes > 0){
     possiblePitches = (createAllValidPitches(pitchlist, scale, intervalRules, minPitch, maxPitch));
-    pitch = keeptema(................);
+    // laga þetta fall
+    ////////////////////////////////////////////////////////
+    //pitch = keeptema();
     pitchlist.push(pitch);
   }
   return pitchlist;
@@ -44,11 +46,11 @@ function createAllValidPitches( scale, intervalRules, minPitch, maxPitch, lastpi
   intervalRules.map((interval) => {
     let testPitch = lastpitch - interval;
     if(
-      (isMember((testPitch%12), scale)) & ((testPitch >= minPitch) & (testPitch <= maxPitch))
+      (isMember((testPitch%12), scale)) && ((testPitch >= minPitch) && (testPitch <= maxPitch))
     ) validPitches.push(testPitch);
     testPitch = lastpitch + interval;
     if(
-      (isMember((testPitch%12), scale)) & ((testPitch >= minPitch) & (testPitch <= maxPitch))
+      (isMember((testPitch%12), scale)) && ((testPitch >= minPitch) && (testPitch <= maxPitch))
     ) validPitches.push(testPitch);
   });
   removeDuplicates(validPitches);
@@ -88,7 +90,8 @@ function keepTema(tema, possiblePitches){
   for (let i = 0; i < possiblePitches.length; i++){
     chances.push(temaChecker(tema, possiblePitches[i]))
   }
-  return .............
+  // laga þetta fall
+  /////////////////////////////////////////////////////////////////
 }
 
 // skilar hversu líkt þetta er þemanum miðað við fjóra mismunandi hluti sem að hafa mismunandi vigtir
@@ -96,24 +99,61 @@ function temaChecker( temalist, notelist){
 
 }
 
-// skilar gildi frá 0-lengd tema eftir því hversu mörg tónbil eru eins
+// býr til tónbila array fyrir array á nótum
+function makeIntervalArray (arr){
+  let intervalArr = [];
+  for(let i = 1; i < arr.length; i++){
+    intervalArr.push(arr[i-1] - arr[i]);
+  }
+  return intervalArr;
+}
+
+// skilar gildi frá 0-1 tema eftir því hversu mörg tónbil eru eins
 function intervalValue( tema, note ){
-
+  let count = 0;
+  for (let i = 0; i < note.length; i++){
+    if(isMember(note[i],tema)) count++;
+  }
+  return count/tema.length;
 }
 
-// skilar gildi frá 0-lengd tema eftir því hversu mörg tónbil eru eins á sama stað
-function intervalPositionsValue(){
-
+// skilar gildi frá 0-1 tema eftir því hversu mörg tónbil eru eins á sama stað
+function intervalPositionsValue(tema, note){
+  let count = 0;
+  for (let i = 0; i < note.length; i++){
+    if(note[i] === tema[i]) count++;
+  }
+  return count/tema.length;
 }
 
-// skilar gildi frá 0-lengd tema eftir því hversu mörg tónbilana séu með sömu stefnu
-function intervalDirectionValue(){
-
+// skilar gildi frá 0-1 tema eftir því hversu mörg tónbilana séu með sömu stefnu
+function intervalDirectionValue(tema, note){
+  let count = 0;
+  for (let i = 0; i < note.length; i++){
+    if(((isMinus(note[i])&&isMinus(note[i]))||(isPlus(note[i])&&isPlus(note[i])))) count++;
+  }
+  return count/tema.length;
 }
 
-//skilar gildi eftir skyldleika
-function relationValue (){
+// skilar true ef tala er neikvæð
+function isMinus(val){
+  if (val < 0) return true;
+  return false;
+}
 
+// skilar true ef tala er jákvæð
+function isPlus(val){
+  if (val > 0) return true;
+  return false;
+}
+
+//skilar gildi frá 0-1 eftir skyldleika
+function relationValue (tema, note){
+  let count = 0;
+  for(let i = 0; i < note.length; i++){
+    if (note[i] + tema[i] === 12) count++;
+  }
+  return count/tema.length;
 }
 
 
@@ -131,18 +171,18 @@ function markovChain(){
 }
 
 // Býr til attack lista sem að segir til um hvenær á að spila nótu
-function createAttackList(noNotes tema attackMatrix){
+function createAttackList(noNotes, tema, attackMatrix){
 
 }
 // Býr til duration lista sem að segir um til hversu lengi nótan lyfir
-function createDurationList(attackDelta ratio){
+function createDurationList(attackDelta, ratio){
 
 }
 // Býr til velocity lista sem að  segir til um hversu "öflug" nótan er
-function createVelocityList(noNotes intensity){
+function createVelocityList(noNotes, intensity){
 
 }
 // Býr til channel lista sem að segir til um á hvaða channeli á að spila nótu, gefur möguleika á að spila margar nótur á mismunandi channelum
-function createChannelsList(noNotes channel){
+function createChannelsList(noNotes, channel){
 
 }
