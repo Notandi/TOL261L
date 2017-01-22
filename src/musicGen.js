@@ -169,12 +169,17 @@ function relationValue (tema, note){
 // skilar random gildum útfrá markovkeðjunnimatrixunni. Fjöldi gilda sem er skilað er skilgreint með noValues
 function markovChain(valueArray, rowMatrix, noValues){
   let outlist = [];
-  let currentValue = (0,valueArray.length);
+  let currentValue = random(0,valueArray.length-1);
   for (let i = 0; i < noValues; i++){
     currentValue = rowValue(rowMatrix[currentValue]);
     outlist.push(valueArray[currentValue]);
   }
   return outlist;
+}
+
+function random(min, max){
+  let rand = (Math.round(Math.random() * (max - min))) + min;
+  return rand;
 }
 // tekur röð í markovkeðjumatrixunni og skilar hvaða röð var fyrir valinu útfrá gefnum líkum í markovkeðjunni
 function rowValue(row){
