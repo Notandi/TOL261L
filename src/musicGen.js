@@ -96,7 +96,14 @@ function keepTema(tema, possiblePitches){
 
 // skilar hversu líkt þetta er þemanum miðað við fjóra mismunandi hluti sem að hafa mismunandi vigtir
 function temaChecker( temalist, notelist){
-
+  const tema = makeIntervalArray(temalist);
+  const notes = makeIntervalArray(notelist);
+  const intervals = intervalValue(tema, notes);
+  const intervalPositions = intervalPositionsValue(tema, notes);
+  const intervalDirection = intervalDirectionValue(tema, notes);
+  const relation = relationValue(tema, notes);
+  const result = (intervals * 0,4) + (intervalPositions * 0,3) + (intervalDirection * 0,2) + (relation * 0,1);
+  return result;
 }
 
 // býr til tónbila array fyrir array á nótum
@@ -109,7 +116,7 @@ function makeIntervalArray (arr){
 }
 
 // skilar gildi frá 0-1 tema eftir því hversu mörg tónbil eru eins
-function intervalValue( tema, note ){
+function intervalValue( tema, notes ){
   let count = 0;
   for (let i = 0; i < note.length; i++){
     if(isMember(note[i],tema)) count++;
@@ -118,7 +125,7 @@ function intervalValue( tema, note ){
 }
 
 // skilar gildi frá 0-1 tema eftir því hversu mörg tónbil eru eins á sama stað
-function intervalPositionsValue(tema, note){
+function intervalPositionsValue(tema, notes){
   let count = 0;
   for (let i = 0; i < note.length; i++){
     if(note[i] === tema[i]) count++;
@@ -127,7 +134,7 @@ function intervalPositionsValue(tema, note){
 }
 
 // skilar gildi frá 0-1 tema eftir því hversu mörg tónbilana séu með sömu stefnu
-function intervalDirectionValue(tema, note){
+function intervalDirectionValue(tema, notes){
   let count = 0;
   for (let i = 0; i < note.length; i++){
     if(((isMinus(note[i])&&isMinus(note[i]))||(isPlus(note[i])&&isPlus(note[i])))) count++;
@@ -157,17 +164,26 @@ function relationValue (tema, note){
 }
 
 
-function changeListToTema(){
-
-}
-
 //Markov keðjuföll
 
-function markovValues(){
-
+// skilar random gildum útfrá markovkeðjunnimatrixunni. Fjöldi gilda sem er skilað er skilgreint með noValues
+function markovChain(valueArray, rowMatrix, noValues){
+  let outlist = [];
+  let currentValue = (0,valueArray.length);
+  for (let i = 0; i < noValues; i++){
+    currentValue = rowValue(rowMatrix[currentValue]);
+    outlist.push(valueArray[currentValue]);
+  }
+  return outlist;
 }
-function markovChain(){
-
+// tekur röð í markovkeðjumatrixunni og skilar hvaða röð var fyrir valinu útfrá gefnum líkum í markovkeðjunni
+function rowValue(row){
+  const random = Math.random();
+  let chancevalue = 0;
+  for (let i = 0; i < row.length; i++){
+    chancevalue += row[i];
+    if (random < chancevalue) return i;
+  }
 }
 
 // Býr til attack lista sem að segir til um hvenær á að spila nótu

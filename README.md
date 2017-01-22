@@ -8,3 +8,7 @@ Notaði gamalt vefforritunarverkefni sem grunn og breytti honum. Búinn að bæt
 Byrjað á því að skipuleggja almennilega hvernig á að tækla verkefnið https://trello.com/b/jbetEsb9/lokaverkefni byrjað að henda inn töskum á trello og búa til to do lista.Byrjað á því að endurskrifa tónlistarverkefni úr lisp í javascript og breyta því
 ## 20 Jan
 Haldið áfram að endurskrifa tónlistarforrit í js
+## 21 Jan
+Eitthvað smá unnið áfram í að endurskrifa tónlistarforrit í js og tíma eitt í rannsóknarvinnu og hugmyndiavinnu.
+## 22 Jan
+Næstum búinn að endurskrifa tónlistarverkefnið í js með smá breytingum. Öll grunn föll kominn á bara eftir að sameina þau öll í listonum og test að allt virki 100%
