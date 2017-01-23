@@ -14,7 +14,7 @@ function createPitchList(noNotes, tema, scale, intervalRules, minPitch, maxPitch
     pitch = keepTema( tema, possiblePitches, previousPitches);
     pitchlist.push(pitch);
     previousPitches.push(pitch);
-    noNotes = noNotes-1
+    noNotes = noNotes-1;
   }
   return pitchlist;
 }
@@ -94,10 +94,11 @@ function randomPitch(minPitch, maxPitch){
 function keepTema(tema, possiblePitches, previousPitches){
   let chances = [];
   for (let i = 0; i < possiblePitches.length; i++){
-    const notes = [];
-    notes.concat(previousPitches);
+    let notes = previousPitches;
     notes.push(possiblePitches[i]);
+    console.log(notes);
     chances.push(temaChecker(tema, notes));
+    notes.pop()
   }
   let max = 0;
   let maxval = 0;
