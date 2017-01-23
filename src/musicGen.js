@@ -4,13 +4,17 @@ function createPitchList(noNotes, tema, scale, intervalRules, minPitch, maxPitch
   let possiblePitches = [];
   let pitchlist = [];
   let pitch;
-  let previousPitches = createValidStartPitches(tema.length(), scale, intervalRules, minPitch, maxPitch);
+  let previousPitches = createValidStartPitches(tema.length, scale, intervalRules, minPitch, maxPitch);
   while(noNotes > 0){
-    possiblePitches = (createAllValidPitches(pitchlist, scale, intervalRules, minPitch, maxPitch));
-    // laga þetta fall
-    ////////////////////////////////////////////////////////
-    pitch = keeptema( tema, possiblePitches, previousPitches);
+    const lastpitch = previousPitches[previousPitches.length-1];
+    possiblePitches = createAllValidPitches(scale, intervalRules, minPitch, maxPitch, lastpitch);
+    previousPitches.reverse();
+    previousPitches.pop();
+    previousPitches.reverse();
+    pitch = keepTema( tema, possiblePitches, previousPitches);
     pitchlist.push(pitch);
+    previousPitches.push(pitch);
+    noNotes = noNotes-1
   }
   return pitchlist;
 }
@@ -18,7 +22,8 @@ function createPitchList(noNotes, tema, scale, intervalRules, minPitch, maxPitch
 // Býr til valid pitch sem að uppfyllir öll skilyrði
 function createValidPitch(scale, intervalRules, minPitch, maxPitch, lastpitch){
   let pitch = randomPitch(minPitch, maxPitch);
-  while(!(isMember((pitch%12), scale) && isMember((pitch%12), Math.abs(pitch - lastpitch)))){
+  while(!
+    (isMember((pitch%12), scale) && isMember(Math.abs(pitch - lastpitch),intervalRules))){
     pitch = randomPitch(minPitch, maxPitch);
   }
   return pitch;
@@ -34,7 +39,7 @@ function createValidStartPitches(noNotes, scale, intervalRules, minPitch, maxPit
   pitches.push(lastpitch);
   noNotes = noNotes - 1;
   while( noNotes > 0){
-    pitches.push(createValidPitch(scale, intervalRules, minPitch, maxPitch, lastpitch))
+    pitches.push(createValidPitch(scale, intervalRules, minPitch, maxPitch, lastpitch));
     noNotes = noNotes-1;
   }
   return pitches;
@@ -102,6 +107,7 @@ function keepTema(tema, possiblePitches, previousPitches){
       max = i;
     }
   }
+  console.log(possiblePitches[max]);
   return possiblePitches[max];
 }
 
