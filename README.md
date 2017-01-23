@@ -9,6 +9,6 @@ Byrjað á því að skipuleggja almennilega hvernig á að tækla verkefnið ht
 ## 20 Jan
 Haldið áfram að endurskrifa tónlistarforrit í js
 ## 21 Jan
-Eitthvað smá unnið áfram í að endurskrifa tónlistarforrit í js og tíma eitt í rannsóknarvinnu og hugmyndiavinnu.
+Eitthvað smá unnið áfram í að endurskrifa tónlistarforrit í js og tíma eitt í rannsóknarvinnu og hugmyndavinnu.
 ## 22 Jan
-Næstum búinn að endurskrifa tónlistarverkefnið í js með smá breytingum. Öll grunn föll kominn á bara eftir að sameina þau öll í listonum og test að allt virki 100%
+Næstum búinn að endurskrifa tónlistarverkefnið í js með smá breytingum. Öll grunn föll kominn á bara eftir að sameina þau öll og testa að allt virki 100%

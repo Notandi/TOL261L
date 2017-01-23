@@ -4,11 +4,12 @@ function createPitchList(noNotes, tema, scale, intervalRules, minPitch, maxPitch
   let possiblePitches = [];
   let pitchlist = [];
   let pitch;
+  let previousPitches = createValidStartPitches(tema.length(), scale, intervalRules, minPitch, maxPitch);
   while(noNotes > 0){
     possiblePitches = (createAllValidPitches(pitchlist, scale, intervalRules, minPitch, maxPitch));
     // laga þetta fall
     ////////////////////////////////////////////////////////
-    //pitch = keeptema();
+    pitch = keeptema( tema, possiblePitches, previousPitches);
     pitchlist.push(pitch);
   }
   return pitchlist;
@@ -85,13 +86,23 @@ function randomPitch(minPitch, maxPitch){
 //tema föll
 
 // rennur í gegnum allar mögulegar nótur og skilar þeirri sem að er líkust þemanum
-function keepTema(tema, possiblePitches){
-  let chances = []
+function keepTema(tema, possiblePitches, previousPitches){
+  let chances = [];
   for (let i = 0; i < possiblePitches.length; i++){
-    chances.push(temaChecker(tema, possiblePitches[i]))
+    const notes = [];
+    notes.concat(previousPitches);
+    notes.push(possiblePitches[i]);
+    chances.push(temaChecker(tema, notes));
   }
-  // laga þetta fall
-  /////////////////////////////////////////////////////////////////
+  let max = 0;
+  let maxval = 0;
+  for (let i = 0; i < chances.length; i++){
+    if (chances[i] > maxval){
+      maxval = chances[i];
+      max = i;
+    }
+  }
+  return possiblePitches[max];
 }
 
 // skilar hversu líkt þetta er þemanum miðað við fjóra mismunandi hluti sem að hafa mismunandi vigtir
@@ -102,7 +113,7 @@ function temaChecker( temalist, notelist){
   const intervalPositions = intervalPositionsValue(tema, notes);
   const intervalDirection = intervalDirectionValue(tema, notes);
   const relation = relationValue(tema, notes);
-  const result = (intervals * 0,4) + (intervalPositions * 0,3) + (intervalDirection * 0,2) + (relation * 0,1);
+  const result = (intervals * 0.4) + (intervalPositions * 0.3) + (intervalDirection * 0.2) + (relation * 0.1);
   return result;
 }
 
@@ -118,8 +129,8 @@ function makeIntervalArray (arr){
 // skilar gildi frá 0-1 tema eftir því hversu mörg tónbil eru eins
 function intervalValue( tema, notes ){
   let count = 0;
-  for (let i = 0; i < note.length; i++){
-    if(isMember(note[i],tema)) count++;
+  for (let i = 0; i < notes.length; i++){
+    if(isMember(notes[i],tema)) count++;
   }
   return count/tema.length;
 }
@@ -127,8 +138,8 @@ function intervalValue( tema, notes ){
 // skilar gildi frá 0-1 tema eftir því hversu mörg tónbil eru eins á sama stað
 function intervalPositionsValue(tema, notes){
   let count = 0;
-  for (let i = 0; i < note.length; i++){
-    if(note[i] === tema[i]) count++;
+  for (let i = 0; i < notes.length; i++){
+    if(notes[i] === tema[i]) count++;
   }
   return count/tema.length;
 }
@@ -136,8 +147,8 @@ function intervalPositionsValue(tema, notes){
 // skilar gildi frá 0-1 tema eftir því hversu mörg tónbilana séu með sömu stefnu
 function intervalDirectionValue(tema, notes){
   let count = 0;
-  for (let i = 0; i < note.length; i++){
-    if(((isMinus(note[i])&&isMinus(note[i]))||(isPlus(note[i])&&isPlus(note[i])))) count++;
+  for (let i = 0; i < notes.length; i++){
+    if(((isMinus(notes[i])&&isMinus(tema[i]))||(isPlus(notes[i])&&isPlus(tema[i])))) count++;
   }
   return count/tema.length;
 }
@@ -155,10 +166,10 @@ function isPlus(val){
 }
 
 //skilar gildi frá 0-1 eftir skyldleika
-function relationValue (tema, note){
+function relationValue (tema, notes){
   let count = 0;
-  for(let i = 0; i < note.length; i++){
-    if (note[i] + tema[i] === 12) count++;
+  for(let i = 0; i < notes.length; i++){
+    if (notes[i] + tema[i] === 12) count++;
   }
   return count/tema.length;
 }
@@ -193,17 +204,18 @@ function rowValue(row){
 
 // Býr til attack lista sem að segir til um hvenær á að spila nótu
 function createAttackList(noNotes, tema, attackMatrix){
-
+  return markovChain(tema, attackMatrix, noNotes);
 }
 // Býr til duration lista sem að segir um til hversu lengi nótan lyfir
 function createDurationList(attackDelta, ratio){
-
+  // til þess að testa í byrjun verður þetta alltaf sama duration
 }
 // Býr til velocity lista sem að  segir til um hversu "öflug" nótan er
 function createVelocityList(noNotes, intensity){
+  // til þess að testa í byrjun verða allar nótur jafn öflugar
 
 }
 // Býr til channel lista sem að segir til um á hvaða channeli á að spila nótu, gefur möguleika á að spila margar nótur á mismunandi channelum
 function createChannelsList(noNotes, channel){
-
+  // til þess að testa í byrjun verður þetta allt á sama channeli nota síðan mörg channel til þess að búa til betra tónverk
 }
