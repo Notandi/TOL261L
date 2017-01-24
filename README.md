@@ -14,3 +14,5 @@ Eitthvað smá unnið áfram í að endurskrifa tónlistarforrit í js og tíma 
 Næstum búinn að endurskrifa tónlistarverkefnið í js með smá breytingum. Öll grunn föll kominn á bara eftir að sameina þau öll og testa að allt virki 100%
 ## 23 Jan
 Búið að skrifa grunn tónlistarforrit í js á eftir að fínpússa
+## 24 Jan
+Nokkurveginn komið tónlistarforritið. 

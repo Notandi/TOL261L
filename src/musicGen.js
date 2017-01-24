@@ -15,8 +15,19 @@ function createPitchList(noNotes, tema, scale, intervalRules, minPitch, maxPitch
     pitchlist.push(pitch);
     previousPitches.push(pitch);
     noNotes = noNotes-1;
+    rotate(tema);
   }
   return pitchlist;
+}
+
+
+function rotate(tema) {
+  const temp = tema[0];
+  for (i = 1; i < tema.length ; i++){
+    const tmp = tema[i -1];
+    tema[i-1] = tema[i]
+  }
+  tema[tema.length - 1]  = temp;
 }
 
 // Býr til valid pitch sem að uppfyllir öll skilyrði
@@ -96,19 +107,17 @@ function keepTema(tema, possiblePitches, previousPitches){
   for (let i = 0; i < possiblePitches.length; i++){
     let notes = previousPitches;
     notes.push(possiblePitches[i]);
-    console.log(notes);
     chances.push(temaChecker(tema, notes));
     notes.pop()
   }
   let max = 0;
   let maxval = 0;
   for (let i = 0; i < chances.length; i++){
-    if (chances[i] > maxval){
+    if (chances[i] >= maxval){
       maxval = chances[i];
       max = i;
     }
   }
-  console.log(possiblePitches[max]);
   return possiblePitches[max];
 }
 
@@ -120,7 +129,7 @@ function temaChecker( temalist, notelist){
   const intervalPositions = intervalPositionsValue(tema, notes);
   const intervalDirection = intervalDirectionValue(tema, notes);
   const relation = relationValue(tema, notes);
-  const result = (intervals * 0.4) + (intervalPositions * 0.3) + (intervalDirection * 0.2) + (relation * 0.1);
+  const result = (intervals * 0.2) + (intervalPositions * 0.4) + (intervalDirection * 0.3) + (relation * 0.1);
   return result;
 }
 
@@ -146,7 +155,7 @@ function intervalValue( tema, notes ){
 function intervalPositionsValue(tema, notes){
   let count = 0;
   for (let i = 0; i < notes.length; i++){
-    if(notes[i] === tema[i]) count++;
+    if(Math.abs(notes[i]) === Math.abs(tema[i])) count++;
   }
   return count/tema.length;
 }
