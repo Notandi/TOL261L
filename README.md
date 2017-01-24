@@ -15,4 +15,4 @@ Næstum búinn að endurskrifa tónlistarverkefnið í js með smá breytingum. 
 ## 23 Jan
 Búið að skrifa grunn tónlistarforrit í js á eftir að fínpússa
 ## 24 Jan
-Nokkurveginn komið tónlistarforritið. 
+Nokkurveginn komið tónlistarforritið. Byrjaður að designa síðu
