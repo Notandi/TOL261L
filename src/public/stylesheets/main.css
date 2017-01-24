@@ -1,2 +1,38 @@
 body {
-  background: black; }
+  padding: 50px;
+  background: linear-gradient(to bottom right, #37FFA0, #44C7FF);
+  height: 100vh;
+}
+h1 {
+  color: #C85DFF;
+  /*text-shadow: -1px 0 #C85DFF, 0 1px #C85DFF, 1px 0 #C85DFF, 0 -1px #C85DFF;*/
+  font-family: 'Monoton', cursive;
+  font-size: 50px;
+  text-align: center;
+
+
+}
+p{
+  color: #4D80E8;
+  /*text-shadow: -1px 0 #4D80E8, 0 1px #4D80E8, 1px 0 #4D80E8, 0 -1px #4D80E8;*/
+  font-family: 'Julius Sans One', sans-serif;
+  text-align: center;
+
+
+}
+.clear {
+   text-align:center;
+}
+button {
+  background: none;
+  border:  1px solid #C85DFF;
+  border-radius: 8px;
+  color: #C85DFF;
+  text-align: center;
+  font-family: 'Monoton', cursive;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin: auto;
+  }
