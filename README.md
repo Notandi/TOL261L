@@ -17,4 +17,4 @@ Búið að skrifa grunn tónlistarforrit í js á eftir að fínpússa
 ## 24 Jan
 Nokkurveginn komið tónlistarforritið. Byrjaður að designa síðuy
 ## 25 Jan
-byrjaður að gera tilraunir með webmidi.js. Byrjaður að fá hljóð út með þvi að nota soundfont-player. 
+byrjaður að gera tilraunir með webmidi.js. Lagði webmidi.js á hilluna og fór að skoða soundfont-player. Byrjaður að fá hljóð út með þvi að nota soundfont-player. Ætla að halda áfram að nota soundfont-player. er byrjaður að skrifa fall sem að spilar listana af tónlist sem voru generate-aðir. Hægt að spila generate-aða tónlist á framenda. á eftir að klára að generate alla lista í tónlist og svo koma þeim á framenda
