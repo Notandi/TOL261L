@@ -1,9 +1,6 @@
-WebMidi.enable(function (err) {
 
-  if (err) {
-    console.log("WebMidi could not be enabled.", err);
-  } else {
-    console.log("WebMidi enabled!");
-  }
+Soundfont.instrument(new AudioContext(), 'acoustic_grand_piano').then(function (piano) {
+  piano.play('C4')
+})
 
-});
+// búa til fall sem að spilar útfrá gefnum listum
