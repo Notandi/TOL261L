@@ -29,7 +29,7 @@ router.get('/del', (req, res, next) => {
 });
 
 router.get('/play', (req, res, next) => {
-  res.send('play');
+  res.render('play');
 });
 
 router.get('*', (req, res, next) => {

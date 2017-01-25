@@ -15,4 +15,6 @@ Næstum búinn að endurskrifa tónlistarverkefnið í js með smá breytingum. 
 ## 23 Jan
 Búið að skrifa grunn tónlistarforrit í js á eftir að fínpússa
 ## 24 Jan
-Nokkurveginn komið tónlistarforritið. Byrjaður að designa síðu
+Nokkurveginn komið tónlistarforritið. Byrjaður að designa síðuy
+## 25 Jan
+byrjaður að gera tilraunir með webmidi.js.

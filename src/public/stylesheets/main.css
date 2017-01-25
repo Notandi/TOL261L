@@ -1,7 +1,8 @@
 body {
-  padding: 50px;
+  padding: 3vh;
   background: linear-gradient(to bottom right, #37FFA0, #44C7FF);
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 }
 h1 {
   color: #C85DFF;
@@ -9,7 +10,13 @@ h1 {
   font-family: 'Monoton', cursive;
   font-size: 50px;
   text-align: center;
-
+}
+h6 {
+  color: #C85DFF;
+  padding-left: 20px;
+  /*text-shadow: -1px 0 #C85DFF, 0 1px #C85DFF, 1px 0 #C85DFF, 0 -1px #C85DFF;*/
+  font-family: 'Monoton', cursive;
+  font-size: 20px;
 
 }
 p{
@@ -17,15 +24,14 @@ p{
   /*text-shadow: -1px 0 #4D80E8, 0 1px #4D80E8, 1px 0 #4D80E8, 0 -1px #4D80E8;*/
   font-family: 'Julius Sans One', sans-serif;
   text-align: center;
-
-
 }
 .clear {
-   text-align:center;
+  text-align:center;
 }
-button {
-  background: none;
-  border:  1px solid #C85DFF;
+a.button {
+  text-decoration:none;
+  padding: 2px;
+  border: 1px solid #C85DFF;
   border-radius: 8px;
   color: #C85DFF;
   text-align: center;
@@ -35,4 +41,14 @@ button {
   margin: 4px 2px;
   cursor: pointer;
   margin: auto;
-  }
+}
+div.music{
+}
+div.musicbox{
+  margin: 2px;
+  border: 4px solid #C85DFF;
+  border-radius: 8px;
+  background: linear-gradient(to bottom right, #4D80E8, #44C7FF);
+  width : 100vw - 5vh;
+  height : 23vh;
+}
