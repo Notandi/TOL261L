@@ -1,77 +1,13 @@
-
-// Býr til pitchlista fyrir tónlistina segir til um hvaða nóta er spiluð
-function createPitchList(noNotes, tema, scale, intervalRules, minPitch, maxPitch) {
-  let possiblePitches = [];
-  let pitchlist = [];
-  let pitch;
-  let previousPitches = createValidStartPitches(tema.length, scale, intervalRules, minPitch, maxPitch);
-  while(noNotes > 0){
-    const lastpitch = previousPitches[previousPitches.length-1];
-    possiblePitches = createAllValidPitches(scale, intervalRules, minPitch, maxPitch, lastpitch);
-    previousPitches.reverse();
-    previousPitches.pop();
-    previousPitches.reverse();
-    pitch = keepTema( tema, possiblePitches, previousPitches);
-    pitchlist.push(pitch);
-    previousPitches.push(pitch);
-    noNotes = noNotes-1;
-    rotate(tema);
-  }
-  return pitchlist;
+// gefur random tölu á milli min og max
+function random(min, max){
+  const rand = (Math.round(Math.random() * (max - min))) + min;
+  return rand;
 }
 
-// rotate-ar array ex. [0,1,2] --> [1,2,0]
-function rotate(tema) {
-  const temp = tema[0];
-  for (i = 1; i < tema.length ; i++){
-    const tmp = tema[i -1];
-    tema[i-1] = tema[i]
-  }
-  tema[tema.length - 1]  = temp;
-}
-
-// Býr til valid pitch sem að uppfyllir öll skilyrði
-function createValidPitch(scale, intervalRules, minPitch, maxPitch, lastpitch){
-  let pitch = random(minPitch, maxPitch);
-  while(!
-    (isMember((pitch%12), scale) && isMember(Math.abs(pitch - lastpitch),intervalRules))){
-    pitch = random(minPitch, maxPitch);
-  }
-  return pitch;
-}
-
-// Býr til nokkur random start pitches svo að hægt sé að byrja að búa til pitches til þess að bera saman við tema og bæta við lagið
-function createValidStartPitches(noNotes, scale, intervalRules, minPitch, maxPitch){
-  let pitches = [];
-  let lastpitch = random(minPitch, maxPitch);
-  while (!(isMember((lastpitch%12), scale))){
-    lastpitch = random(minPitch, maxPitch);
-  }
-  pitches.push(lastpitch);
-  noNotes = noNotes - 1;
-  while( noNotes > 0){
-    pitches.push(createValidPitch(scale, intervalRules, minPitch, maxPitch, lastpitch));
-    noNotes = noNotes-1;
-  }
-  return pitches;
-}
-
-
-//Gáir á öllum möguleikum fyrir næsta pitch útfrá intervalRules og skilar þeim sem uppfylla þau skilyrði að vera í scale og undir maxPitch og yfir minPitch
-function createAllValidPitches( scale, intervalRules, minPitch, maxPitch, lastpitch){
-  let validPitches = [];
-  intervalRules.map((interval) => {
-    let testPitch = lastpitch - interval;
-    if(
-      (isMember((testPitch%12), scale)) && ((testPitch >= minPitch) && (testPitch <= maxPitch))
-    ) validPitches.push(testPitch);
-    testPitch = lastpitch + interval;
-    if(
-      (isMember((testPitch%12), scale)) && ((testPitch >= minPitch) && (testPitch <= maxPitch))
-    ) validPitches.push(testPitch);
-  });
-  removeDuplicates(validPitches);
-  return validPitches;
+// ef að val er á milli eða jafnt min eða max return true annars false
+function isBetween(val, min, max){
+  if (val >= min && val <= max) return true;
+  return false;
 }
 
 // Fall sem að fjarlægir duplicate values úr fylki
@@ -85,81 +21,11 @@ function removeDuplicates(arr){
 }
 
 // Fall sem að gáir hvort að value komi fyrir í fylki
-function isMember(value, arr){
+function isMember(val, arr){
   for(let i = 0; i < arr.length; i++){
-    if (arr[i] === value) return true;
+    if (arr[i] === val) return true;
   }
   return false;
-}
-
-//tema föll
-
-// rennur í gegnum allar mögulegar nótur og skilar þeirri sem að er líkust þemanum
-function keepTema(tema, possiblePitches, previousPitches){
-  let chances = [];
-  for (let i = 0; i < possiblePitches.length; i++){
-    let notes = previousPitches;
-    notes.push(possiblePitches[i]);
-    chances.push(temaChecker(tema, notes));
-    notes.pop()
-  }
-  let max = 0;
-  let maxval = 0;
-  for (let i = 0; i < chances.length; i++){
-    if (chances[i] >= maxval){
-      maxval = chances[i];
-      max = i;
-    }
-  }
-  return possiblePitches[max];
-}
-
-// skilar hversu líkt þetta er þemanum miðað við fjóra mismunandi hluti sem að hafa mismunandi vigtir
-function temaChecker( temalist, notelist){
-  const tema = makeIntervalArray(temalist);
-  const notes = makeIntervalArray(notelist);
-  const intervals = intervalValue(tema, notes);
-  const intervalPositions = intervalPositionsValue(tema, notes);
-  const intervalDirection = intervalDirectionValue(tema, notes);
-  const relation = relationValue(tema, notes);
-  const result = (intervals * 0.2) + (intervalPositions * 0.4) + (intervalDirection * 0.3) + (relation * 0.1);
-  return result;
-}
-
-// býr til tónbila array fyrir array á nótum
-function makeIntervalArray (arr){
-  let intervalArr = [];
-  for(let i = 1; i < arr.length; i++){
-    intervalArr.push(arr[i-1] - arr[i]);
-  }
-  return intervalArr;
-}
-
-// skilar gildi frá 0-1 tema eftir því hversu mörg tónbil eru eins
-function intervalValue( tema, notes ){
-  let count = 0;
-  for (let i = 0; i < notes.length; i++){
-    if(isMember(notes[i],tema)) count++;
-  }
-  return count/tema.length;
-}
-
-// skilar gildi frá 0-1 tema eftir því hversu mörg tónbil eru eins á sama stað
-function intervalPositionsValue(tema, notes){
-  let count = 0;
-  for (let i = 0; i < notes.length; i++){
-    if(Math.abs(notes[i]) === Math.abs(tema[i])) count++;
-  }
-  return count/tema.length;
-}
-
-// skilar gildi frá 0-1 tema eftir því hversu mörg tónbilana séu með sömu stefnu
-function intervalDirectionValue(tema, notes){
-  let count = 0;
-  for (let i = 0; i < notes.length; i++){
-    if(((isMinus(notes[i])&&isMinus(tema[i]))||(isPlus(notes[i])&&isPlus(tema[i])))) count++;
-  }
-  return count/tema.length;
 }
 
 // skilar true ef tala er neikvæð
@@ -174,15 +40,152 @@ function isPlus(val){
   return false;
 }
 
-//skilar gildi frá 0-1 eftir skyldleika
-function relationValue (tema, notes){
-  let count = 0;
-  for(let i = 0; i < notes.length; i++){
-    if (notes[i] + tema[i] === 12) count++;
-  }
-  return count/tema.length;
+// skilar true ef að val1 og val2 eru með sama formerki
+function sameSign(val1, val2){
+  if (isMinus(val1) && isMinus(val2)) return true;
+  if (isPlus(val1) && isPlus(val2)) return true;
+  return false;
 }
 
+// rotate-ar array ex. [0,1,2] --> [1,2,0]
+function rotate(arr) {
+  const temp = arr[0];
+  for (i = 1; i < arr.length ; i++){
+    arr[i-1] = arr[i]
+  }
+  arr[arr.length - 1]  = temp;
+}
+
+// Býr til valid pitch sem að uppfyllir öll skilyrði
+function createValidPitch(scale, intervalRules, minPitch, maxPitch, lastpitch){
+  let pitch = random(minPitch, maxPitch);
+  let note = pitch%12;
+  let interval = Math.abs(pitch - lastpitch);
+  while(!
+    (isMember(note, scale) && isMember(interval,intervalRules))){
+    pitch = random(minPitch, maxPitch);
+    interval = Math.abs(pitch - lastpitch);
+    note = pitch%12;
+  }
+  return pitch;
+}
+
+// Býr til nokkur random start pitches svo að hægt sé að byrja að búa til pitches til þess að bera saman við theme og bæta við lagið
+function createValidStartPitches(noNotes, scale, intervalRules, minPitch, maxPitch){
+  let pitches = [];
+  let lastpitch = random(minPitch, maxPitch);
+  let lastnote = lastpitch%12;
+  while (!(isMember(lastnote, scale))){
+    lastpitch = random(minPitch, maxPitch);
+    lastnote = lastpitch%12;
+  }
+  pitches.push(lastpitch);
+  noNotes = noNotes - 1;
+  while( noNotes > 0){
+    pitches.push(createValidPitch(scale, intervalRules, minPitch, maxPitch, lastpitch));
+    noNotes = noNotes-1;
+  }
+  return pitches;
+}
+
+//Gáir á öllum möguleikum fyrir næsta pitch útfrá intervalRules og skilar þeim sem uppfylla þau skilyrði að vera í scale og undir maxPitch og yfir minPitch
+function createAllValidPitches( scale, intervalRules, minPitch, maxPitch, lastpitch){
+  let validPitches = [];
+  intervalRules.map((interval) => {
+    let testPitch = lastpitch - interval;
+    let testNote = testPitch%12;
+    if(isMember(testNote, scale) && isBetween(testPitch, minPitch, maxPitch)){
+      validPitches.push(testPitch);
+    }
+    testPitch = lastpitch + interval;
+    testNote = testPitch%12;
+    if(isMember(testNote, scale) && isBetween(testPitch, minPitch, maxPitch)){
+      validPitches.push(testPitch);
+    }
+  });
+  removeDuplicates(validPitches);
+  return validPitches;
+}
+
+//theme föll
+
+// rennur í gegnum allar mögulegar nótur og skilar þeirri sem að er líkust þemanum
+function keepTheme(theme, possiblePitches, previousPitches){
+  let chances = [];
+  for (let i = 0; i < possiblePitches.length; i++){
+    let notes = previousPitches;
+    notes.push(possiblePitches[i]);
+    chances.push(themeChecker(theme, notes));
+    notes.pop()
+  }
+  let max = 0;
+  let maxval = 0;
+  for (let i = 0; i < chances.length; i++){
+    if (chances[i] >= maxval){
+      maxval = chances[i];
+      max = i;
+    }
+  }
+  return possiblePitches[max];
+}
+
+// skilar hversu líkt þetta er þemanum miðað við fjóra mismunandi hluti sem að hafa mismunandi vigtir
+function themeChecker( themelist, notelist){
+  const theme = makeIntervalArray(themelist);
+  const notes = makeIntervalArray(notelist);
+  const intervals = intervalValue(theme, notes);
+  const intervalPositions = intervalPositionsValue(theme, notes);
+  const intervalDirection = intervalDirectionValue(theme, notes);
+  const relation = relationValue(theme, notes);
+  const result = (intervals * 0.2) + (intervalPositions * 0.4) + (intervalDirection * 0.3) + (relation * 0.1);
+  return result;
+}
+
+// býr til tónbila array fyrir array á nótum
+function makeIntervalArray (arr){
+  let intervalArr = [];
+  for(let i = 1; i < arr.length; i++){
+    intervalArr.push(arr[i-1] - arr[i]);
+  }
+  return intervalArr;
+}
+
+// skilar gildi frá 0-1 theme eftir því hversu mörg tónbil eru eins
+function intervalValue( theme, notes ){
+  let count = 0;
+  for (let i = 0; i < notes.length; i++){
+    if(isMember(notes[i],theme)) count++;
+  }
+  return count/theme.length;
+}
+
+// skilar gildi frá 0-1 theme eftir því hversu mörg tónbil eru eins á sama stað
+function intervalPositionsValue(theme, notes){
+  let count = 0;
+  for (let i = 0; i < notes.length; i++){
+    if(Math.abs(notes[i]) === Math.abs(theme[i])) count++;
+  }
+  return count/theme.length;
+}
+
+
+// skilar gildi frá 0-1 theme eftir því hversu mörg tónbilana séu með sömu stefnu
+function intervalDirectionValue(theme, notes){
+  let count = 0;
+  for (let i = 0; i < notes.length; i++){
+    if(sameSign(notes[i], theme[i])) count++;
+  }
+  return count/theme.length;
+}
+
+//skilar gildi frá 0-1 eftir skyldleika
+function relationValue (theme, notes){
+  let count = 0;
+  for(let i = 0; i < notes.length; i++){
+    if (notes[i] + theme[i] === 12) count++;
+  }
+  return count/theme.length;
+}
 
 //Markov keðjuföll
 
@@ -197,10 +200,6 @@ function markovChain(valueArray, rowMatrix, noValues){
   return outlist;
 }
 
-function random(min, max){
-  const rand = (Math.round(Math.random() * (max - min))) + min;
-  return rand;
-}
 // tekur röð í markovkeðjumatrixunni og skilar hvaða röð var fyrir valinu útfrá gefnum líkum í markovkeðjunni
 function rowValue(row){
   const random = Math.random();
@@ -211,9 +210,30 @@ function rowValue(row){
   }
 }
 
+// Býr til pitchlista fyrir tónlistina segir til um hvaða nóta er spiluð
+function createPitchList(noNotes, theme, scale, intervalRules, minPitch, maxPitch) {
+  let possiblePitches = [];
+  let pitchlist = [];
+  let pitch;
+  let previousPitches = createValidStartPitches(theme.length, scale, intervalRules, minPitch, maxPitch);
+  while(noNotes > 0){
+    const lastpitch = previousPitches[previousPitches.length-1];
+    possiblePitches = createAllValidPitches(scale, intervalRules, minPitch, maxPitch, lastpitch);
+    previousPitches.reverse();
+    previousPitches.pop();
+    previousPitches.reverse();
+    pitch = keepTheme( theme, possiblePitches, previousPitches);
+    pitchlist.push(pitch);
+    previousPitches.push(pitch);
+    noNotes = noNotes-1;
+    rotate(theme);
+  }
+  return pitchlist;
+}
+
 // Býr til attack lista sem að segir til um hvenær á að spila nótu
-function createAttackList(noNotes, tema, attackMatrix){
-  return markovChain(tema, attackMatrix, noNotes);
+function createAttackList(noNotes, theme, attackMatrix){
+  return markovChain(theme, attackMatrix, noNotes);
 }
 // Býr til duration lista sem að segir um til hversu lengi nótan lyfir
 function createDurationList(attackDelta, ratio){
