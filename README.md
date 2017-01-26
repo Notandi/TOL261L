@@ -1,6 +1,9 @@
 # TOL261L
 Lokaverkefni 2017
 
+
+## -18 Jan
+Eyddi tíma í að skoða mismunandi midi dót. Plana hvað ætti að nota
 ## 18 Jan
 Verkefni officially byrjar
 Notaði gamalt vefforritunarverkefni sem grunn og breytti honum. Búinn að bæta við jsmidgen og búinn að takast að vista og eyða midi file.
@@ -17,4 +20,6 @@ Búið að skrifa grunn tónlistarforrit í js á eftir að fínpússa
 ## 24 Jan
 Nokkurveginn komið tónlistarforritið. Byrjaður að designa síðuy
 ## 25 Jan
-byrjaður að gera tilraunir með webmidi.js. Lagði webmidi.js á hilluna og fór að skoða soundfont-player. Byrjaður að fá hljóð út með þvi að nota soundfont-player. Ætla að halda áfram að nota soundfont-player. er byrjaður að skrifa fall sem að spilar listana af tónlist sem voru generate-aðir. Hægt að spila generate-aða tónlist á framenda. á eftir að klára að generate alla lista í tónlist og svo koma þeim á framenda
+Byrjaður að gera tilraunir með webmidi.js. Lagði webmidi.js á hilluna og fór að skoða soundfont-player. Byrjaður að fá hljóð út með þvi að nota soundfont-player. Ætla að halda áfram að nota soundfont-player. er byrjaður að skrifa fall sem að spilar listana af tónlist sem voru generate-aðir. Hægt að spila generate-aða tónlist á framenda. á eftir að klára að generate alla lista í tónlist og svo koma þeim á framenda
+## 26 Jan
+musicGen.js er núna tilbúið generate-ar tónlistarlista. Farinn í það að koma listunum fram á framendan ætla að setja forritið í front end meðan að ég er að testa og breyta því. Vinn síðan í því að gera það að module sem að er í back-end

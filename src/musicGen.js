@@ -205,7 +205,7 @@ function markovChain(valueArray, rowMatrix, noValues){
 }
 
 function random(min, max){
-  let rand = (Math.round(Math.random() * (max - min))) + min;
+  const rand = (Math.round(Math.random() * (max - min))) + min;
   return rand;
 }
 // tekur röð í markovkeðjumatrixunni og skilar hvaða röð var fyrir valinu útfrá gefnum líkum í markovkeðjunni
@@ -224,14 +224,35 @@ function createAttackList(noNotes, tema, attackMatrix){
 }
 // Býr til duration lista sem að segir um til hversu lengi nótan lyfir
 function createDurationList(attackDelta, ratio){
+  const duration = attackDelta.map(function(x){
+    return x * ratio;
+  });
+  return duration;
   // til þess að testa í byrjun verður þetta alltaf sama duration
 }
 // Býr til velocity lista sem að  segir til um hversu "öflug" nótan er
 function createVelocityList(noNotes, intensity){
+  const velList = [];
+  for(let i = 0; i < noNotes; i++){
+    velList.push(intensity);
+  }
+  return velList;
   // til þess að testa í byrjun verða allar nótur jafn öflugar
 
 }
 // Býr til channel lista sem að segir til um á hvaða channeli á að spila nótu, gefur möguleika á að spila margar nótur á mismunandi channelum
 function createChannelsList(noNotes, channel){
+  const chanList = [];
+  for(let i = 0; i < noNotes; i++){
+    chanList.push(channel);
+  }
+  return chanList;
   // til þess að testa í byrjun verður þetta allt á sama channeli nota síðan mörg channel til þess að búa til betra tónverk
 }
+
+let pList = createPitchList(120, [9, 11, 4, 2, 7, 7, 7, 9, 11, 5],[0,2,4,5,7,9,11], [0,1,2,4,6,8],30,90 );
+let aList = createAttackList (120, [12, 24], [[0.75, 0.25],[0.75, 0.25]]);
+let dList = createDurationList(aList, 0.9);
+let vList = createVelocityList(120,127);
+let cList = createChannelsList(120,0);
+const masterList = {pList, aList, dList, vList, cList};
