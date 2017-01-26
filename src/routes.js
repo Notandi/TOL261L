@@ -23,6 +23,12 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
+router.get('/generate', (req, res, next) => {
+  // setja inn musicGen module hér í framtíðinni
+  const data = "stuff";
+  res.send(data);
+});
+
 router.get('/del', (req, res, next) => {
   fs.unlinkSync('test.mid');
   res.send('removed');

@@ -20,7 +20,7 @@ function createPitchList(noNotes, tema, scale, intervalRules, minPitch, maxPitch
   return pitchlist;
 }
 
-
+// rotate-ar array ex. [0,1,2] --> [1,2,0]
 function rotate(tema) {
   const temp = tema[0];
   for (i = 1; i < tema.length ; i++){
@@ -32,10 +32,10 @@ function rotate(tema) {
 
 // Býr til valid pitch sem að uppfyllir öll skilyrði
 function createValidPitch(scale, intervalRules, minPitch, maxPitch, lastpitch){
-  let pitch = randomPitch(minPitch, maxPitch);
+  let pitch = random(minPitch, maxPitch);
   while(!
     (isMember((pitch%12), scale) && isMember(Math.abs(pitch - lastpitch),intervalRules))){
-    pitch = randomPitch(minPitch, maxPitch);
+    pitch = random(minPitch, maxPitch);
   }
   return pitch;
 }
@@ -43,9 +43,9 @@ function createValidPitch(scale, intervalRules, minPitch, maxPitch, lastpitch){
 // Býr til nokkur random start pitches svo að hægt sé að byrja að búa til pitches til þess að bera saman við tema og bæta við lagið
 function createValidStartPitches(noNotes, scale, intervalRules, minPitch, maxPitch){
   let pitches = [];
-  let lastpitch = randomPitch(minPitch, maxPitch);
+  let lastpitch = random(minPitch, maxPitch);
   while (!(isMember((lastpitch%12), scale))){
-    lastpitch = randomPitch(minPitch, maxPitch);
+    lastpitch = random(minPitch, maxPitch);
   }
   pitches.push(lastpitch);
   noNotes = noNotes - 1;
@@ -74,7 +74,7 @@ function createAllValidPitches( scale, intervalRules, minPitch, maxPitch, lastpi
   return validPitches;
 }
 
-// Fall sem að fjarlægir duplicate values í fylki
+// Fall sem að fjarlægir duplicate values úr fylki
 function removeDuplicates(arr){
   for(let i = 0; i < arr.length;  i++){
     for(let j= i + 1; j < arr.length; j++){
@@ -91,13 +91,6 @@ function isMember(value, arr){
   }
   return false;
 }
-
-// Fall sem að býr til random pitch á milli minPitch og maxPitch
-function randomPitch(minPitch, maxPitch){
-  let pitch = (Math.round(Math.random() * (maxPitch - minPitch))) + minPitch;
-  return pitch;
-}
-
 
 //tema föll
 
@@ -251,8 +244,8 @@ function createChannelsList(noNotes, channel){
 }
 
 let pList = createPitchList(120, [9, 11, 4, 2, 7, 7, 7, 9, 11, 5],[0,2,4,5,7,9,11], [0,1,2,4,6,8],30,90 );
-let aList = createAttackList (120, [12, 24], [[0.75, 0.25],[0.75, 0.25]]);
+let aList = createAttackList (120, [64, 96], [[0.75, 0.25],[0.75, 0.25]]);
 let dList = createDurationList(aList, 0.9);
 let vList = createVelocityList(120,127);
 let cList = createChannelsList(120,0);
-const masterList = {pList, aList, dList, vList, cList};
+const masterList = {pitchList: pList, attackList: aList, durationList: dList, velocityList: vList, channelsList: cList};
