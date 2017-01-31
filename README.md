@@ -23,3 +23,9 @@ Nokkurveginn komið tónlistarforritið. Byrjaður að designa síðuy
 Byrjaður að gera tilraunir með webmidi.js. Lagði webmidi.js á hilluna og fór að skoða soundfont-player. Byrjaður að fá hljóð út með þvi að nota soundfont-player. Ætla að halda áfram að nota soundfont-player. er byrjaður að skrifa fall sem að spilar listana af tónlist sem voru generate-aðir. Hægt að spila generate-aða tónlist á framenda. á eftir að klára að generate alla lista í tónlist og svo koma þeim á framenda
 ## 26 Jan
 musicGen.js er núna tilbúið generate-ar tónlistarlista. Farinn í það að koma listunum fram á framendan ætla að setja forritið í front end meðan að ég er að testa og breyta því. Vinn síðan í því að gera það að module sem að er í back-end. Hægt að generate-a og hlusta á tónverk á framenda. Búinn að hreinsa musicGen.js kóðann smá til
+## 27 Jan
+## 28 Jan
+## 30 Jan
+Fór að læra react https://online.reacttraining.com/courses/reactjsfundamentals. skoðaði tónfræði
+## 31 Jan
+Fór að læra meira react

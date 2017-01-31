@@ -6,8 +6,7 @@ function random(min, max){
 
 // ef að val er á milli eða jafnt min eða max return true annars false
 function isBetween(val, min, max){
-  if (val >= min && val <= max) return true;
-  return false;
+  return val >= min && val <= max ? true: false;
 }
 
 // Fall sem að fjarlægir duplicate values úr fylki
@@ -30,14 +29,12 @@ function isMember(val, arr){
 
 // skilar true ef tala er neikvæð
 function isMinus(val){
-  if (val < 0) return true;
-  return false;
+  return val < 0 ? true: false;
 }
 
 // skilar true ef tala er jákvæð
 function isPlus(val){
-  if (val > 0) return true;
-  return false;
+  return val > 0 ? true: false;
 }
 
 // skilar true ef að val1 og val2 eru með sama formerki
@@ -61,8 +58,7 @@ function createValidPitch(scale, intervalRules, minPitch, maxPitch, lastpitch){
   let pitch = random(minPitch, maxPitch);
   let note = pitch%12;
   let interval = Math.abs(pitch - lastpitch);
-  while(!
-    (isMember(note, scale) && isMember(interval,intervalRules))){
+  while(!(isMember(note, scale) && isMember(interval,intervalRules))){
     pitch = random(minPitch, maxPitch);
     interval = Math.abs(pitch - lastpitch);
     note = pitch%12;
