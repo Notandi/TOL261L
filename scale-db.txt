@@ -1,0 +1,95 @@
+c major : c d e f g a b
+
+0 2 4 5 7 9 11
+
+g major : g a b c d e f#
+
+7 9 11 0 2 4 6
+
+d major : d e f# g a b c#
+
+2 4 6 7 9 11 1
+
+a major : a b c# d e f# g#
+
+9 11 1 2 4 6 8
+
+e major : e f# g# a b c# d#
+
+4 6 8 9 11 1 3
+
+b major : b c# d# e f# g# a#
+
+11 1 3 4 6 8 10
+
+f# major : f# g# a# b c# d# e#
+
+6 8 10 11 1 3 5
+
+db major : db eb f  gb ab c
+
+1 3 5 6 8 10 0
+
+ab major : ab bb c db eb f g
+
+8 10 0 1 3 5 7
+
+eb major : eb f g ab bb c d
+
+3 5 7 8 10 0 2
+
+bb major : bb c d eb f g a
+
+10 0 2 3 5 7 9
+
+f major : f g a bb c d e
+
+5 7 9 10 0 2 4
+
+c minor : c d eb f g ab bb
+
+0 2 3 5 7 8 10
+
+g minor : g a bb c d eb f
+
+7 9 10 0 2 3 5
+
+d minor : d e f g a bb c
+
+2 4 5 7 9 10 0
+
+a minor : a b c d e f g
+
+9 11 0 2 4 5 7
+
+e minor : e f# g a b c d
+
+4 6 7 9 11 0 2
+
+b minor : b c# d e f# g a
+
+11 1 2 4 6 7 9
+
+f# minor : f# g# a b c# d e
+
+6 8 9 11 1 2 4
+
+c# minor : c# d# e f# g# a b
+
+1 3 4 6 8 9 11
+
+g# minor : g# a# b c# d# e f#
+
+8 10 11 1 3 4 6
+
+eb minor : eb f gb ab bb cb db
+
+3 5 6 8 10 11 1
+
+bb minor : bb c db eb f gb ab
+
+10 0 1 3 5 6 8
+
+f minor : f g ab bb c db eb
+
+5 7 8 10 0 1 3
