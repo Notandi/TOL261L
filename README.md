@@ -36,3 +36,9 @@ Hélt áfram að læra á react.
 ## 4 Feb
 ## 5 Feb
 Haldið áfram að læra á react
+## 6 Feb
+Haldið áfram að læra á react
+## 7 Feb
+Haldið áfram að læra á react
+## 8 Feb
+Verkefni fært yfir í react
