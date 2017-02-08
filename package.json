@@ -1,27 +1,27 @@
 {
-  "name": "verkefni6",
-  "version": "0.0.0",
+  "name": "lookup-server",
+  "version": "0.0.1",
   "private": true,
-  "scripts": {
-    "start": "node ./bin/www",
-    "lint": "node ./node_modules/eslint/bin/eslint.js ./src/*.js"
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-0"
+    ]
   },
   "dependencies": {
-    "body-parser": "~1.15.1",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.2.0",
-    "express": "~4.13.4",
-    "jsmidgen": "^0.1.5",
-    "morgan": "~1.7.0",
-    "pug": "^2.0.0-beta6",
-    "serve-favicon": "~2.3.0"
+    "babel-cli": "6.14.0",
+    "babel-core": "6.14.0",
+    "babel-preset-es2015": "6.14.0",
+    "babel-preset-stage-0": "6.5.0",
+    "express": "4.13.3"
+  },
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "babel-node server.js",
+    "client": "babel-node start-client.js",
+    "dev": "echo \"This command has been deprecated. Use 'npm start'\" && exit 1"
   },
   "devDependencies": {
-    "babel-eslint": "^7.1.0",
-    "eslint": "^3.8.1",
-    "eslint-config-airbnb": "^12.0.0",
-    "eslint-plugin-import": "^2.0.1",
-    "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.4.1"
+    "concurrently": "^3.1.0"
   }
 }

@@ -29,5 +29,10 @@ musicGen.js er núna tilbúið generate-ar tónlistarlista. Farinn í það að 
 Fór að læra react https://online.reacttraining.com/courses/reactjsfundamentals. skoðaði tónfræði
 ## 31 Jan
 Fór að læra meira react. skoðaði meiri tónfræði.
-## 32 Jan
+## 1 Feb
 Hélt áfram að læra á react.
+## 2 Feb
+## 3 Feb
+## 4 Feb
+## 5 Feb
+Haldið áfram að læra á react
