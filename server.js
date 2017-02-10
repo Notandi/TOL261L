@@ -12,18 +12,9 @@ if (process.env.NODE_ENV === 'production') {
 
 app.get('/api/music', (req, res) => {
   const param = req.query.q;
-
   var List = MusicGen();
-
   res.json(List);
   return;
-
-  if (!param) {
-    res.json({
-      error: 'Missing required parameter `q`',
-    });
-    return;
-  }
 });
 
 app.listen(app.get('port'), () => {

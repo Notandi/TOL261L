@@ -41,4 +41,8 @@ Haldið áfram að læra á react
 ## 7 Feb
 Haldið áfram að læra á react
 ## 8 Feb
-Verkefni fært yfir í react
+Verkefni fært yfir í react. https://www.fullstackreact.com/articles/using-create-react-app-with-a-server/ notast til hliðsjónar hvernig á að setja upp react og vera með server á bakenda.
+## 9 Feb
+Farið að vinna að öðru hliðar verkefni  til þess að mastera react og halda áfram að fikta með tónlistar pakka í node
+## 10 Feb
+Komst að nýjum package note.js sem að gæti hentað betur til þess að spila tónlist. Hliðarverkefnið er að búa til online synth. Hægt væri að nýta sér það hliðarverkefi í aðaverkefninu
