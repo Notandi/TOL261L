@@ -46,3 +46,9 @@ Verkefni fært yfir í react. https://www.fullstackreact.com/articles/using-crea
 Farið að vinna að öðru hliðar verkefni  til þess að mastera react og halda áfram að fikta með tónlistar pakka í node
 ## 10 Feb
 Komst að nýjum package note.js sem að gæti hentað betur til þess að spila tónlist. Hliðarverkefnið er að búa til online synth. Hægt væri að nýta sér það hliðarverkefi í aðaverkefninu
+## 11 Feb
+Haldið áfram í hliðarverkefni
+## 12 Feb
+Haldið áfram í hliðarverkefni
+## 13 Feb
+Hliðarverkefni næstum tilbúið, bæti kanski við það á næstunni. Linkur á síðu: https://key-board.herokuapp.com/#/ . Linkur á github:https://github.com/Notandi/Keyboard
