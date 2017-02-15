@@ -52,3 +52,7 @@ Haldið áfram í hliðarverkefni
 Haldið áfram í hliðarverkefni
 ## 13 Feb
 Hliðarverkefni næstum tilbúið, bæti kanski við það á næstunni. Linkur á síðu: https://key-board.herokuapp.com/#/ . Linkur á github:https://github.com/Notandi/Keyboard
+## 14 Feb
+Hliðarverkefni klárða. Linkur á síðu: https://key-board.herokuapp.com/#/.
+## 15 Feb
+## 16 Feb
