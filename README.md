@@ -56,3 +56,10 @@ Hliðarverkefni næstum tilbúið, bæti kanski við það á næstunni. Linkur 
 Hliðarverkefni klárða. Linkur á síðu: https://key-board.herokuapp.com/#/.
 ## 15 Feb
 ## 16 Feb
+## 17 Feb
+## 18 Feb
+## 19 Feb
+## 20 Feb
+## 21 Feb
+## 22 Feb
+Farið í það verkefni að búa til html + css look á síðuna
