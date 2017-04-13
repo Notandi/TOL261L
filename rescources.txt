@@ -1,0 +1,15 @@
+https://en.wikipedia.org/wiki/Song_structure
+https://www.musictheory.net/lessons
+http://www.learningideas.me.uk/musictheory/
+https://www.youtube.com/channel/UCNBiLBQrKrnvwcVRD5fS8aA
+https://en.wikipedia.org/wiki/Chord_progression
+
+https://www.guitarlessonworld.com/lessons/chord-progressions/
+http://www.lotusmusic.com/lm_chordprogressions.html
+
+
+
+
+
+https://medium.com/@patriciolpezjuri/using-create-react-app-with-react-router-express-js-8fa658bf892d#.wepu4wq9c
+https://www.fullstackreact.com/articles/using-create-react-app-with-a-server/

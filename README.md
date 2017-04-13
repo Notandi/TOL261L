@@ -23,17 +23,12 @@ Nokkurveginn komið tónlistarforritið. Byrjaður að designa síðuy
 Byrjaður að gera tilraunir með webmidi.js. Lagði webmidi.js á hilluna og fór að skoða soundfont-player. Byrjaður að fá hljóð út með þvi að nota soundfont-player. Ætla að halda áfram að nota soundfont-player. er byrjaður að skrifa fall sem að spilar listana af tónlist sem voru generate-aðir. Hægt að spila generate-aða tónlist á framenda. á eftir að klára að generate alla lista í tónlist og svo koma þeim á framenda
 ## 26 Jan
 musicGen.js er núna tilbúið generate-ar tónlistarlista. Farinn í það að koma listunum fram á framendan ætla að setja forritið í front end meðan að ég er að testa og breyta því. Vinn síðan í því að gera það að module sem að er í back-end. Hægt að generate-a og hlusta á tónverk á framenda. Búinn að hreinsa musicGen.js kóðann smá til
-## 27 Jan
-## 28 Jan
 ## 30 Jan
 Fór að læra react https://online.reacttraining.com/courses/reactjsfundamentals. skoðaði tónfræði
 ## 31 Jan
 Fór að læra meira react. skoðaði meiri tónfræði.
 ## 1 Feb
 Hélt áfram að læra á react.
-## 2 Feb
-## 3 Feb
-## 4 Feb
 ## 5 Feb
 Haldið áfram að læra á react
 ## 6 Feb
@@ -54,16 +49,14 @@ Haldið áfram í hliðarverkefni
 Hliðarverkefni næstum tilbúið, bæti kanski við það á næstunni. Linkur á síðu: https://key-board.herokuapp.com/#/ . Linkur á github:https://github.com/Notandi/Keyboard
 ## 14 Feb
 Hliðarverkefni klárða. Linkur á síðu: https://key-board.herokuapp.com/#/.
-## 15 Feb
-## 16 Feb
-## 17 Feb
-## 18 Feb
-## 19 Feb
-## 20 Feb
-## 21 Feb
 ## 22 Feb
-Farið í það verkefni að búa til html + css look á síðuna
+Farið í það verkefni að búa til html + css look á síðuna.
+## 23 Feb
+Haldið áfram að skoða möguleika á basic lookin kominn grunn hugmynd og búið að gera test.
 ## 1 Apríl
-Fór að hugsa um að skrifa niður midi file og finna midi spilara til þess að spila hljóð........
+Fór að hugsa um að skrifa niður midi file og finna midi spilara til þess að spila hljóð........ frekar enn það sem ég er með núna
 vandamál tengd því
-fór að skoða hvernig midi fæll er byggður upp
+fór að skoða hvernig midi fæll er byggður upp.
+skoða betur í framtíðinni.
+## 13 Apríl
+Fór að lesa meira af tónfræði kominn með rough hugmynd um hvernig ég útfæri algrím. Skrifaði niður resources sem ég er búinn að vera nota til að læra react og tónfræði. Bætti við chord-db.txt sem er grunnur af chord database sem ég mun nýta mér.
