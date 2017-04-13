@@ -63,3 +63,7 @@ Hliðarverkefni klárða. Linkur á síðu: https://key-board.herokuapp.com/#/.
 ## 21 Feb
 ## 22 Feb
 Farið í það verkefni að búa til html + css look á síðuna
+## 1 Apríl
+Fór að hugsa um að skrifa niður midi file og finna midi spilara til þess að spila hljóð........
+vandamál tengd því
+fór að skoða hvernig midi fæll er byggður upp

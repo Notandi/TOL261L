@@ -6,7 +6,7 @@ function random(min, max){
 
 // ef að val er á milli eða jafnt min eða max return true annars false
 function isBetween(val, min, max){
-  return val >= min && val <= max ? true: false;
+  return val >= min && val <= max ;
 }
 
 // Fall sem að fjarlægir duplicate values úr fylki
@@ -29,12 +29,12 @@ function isMember(val, arr){
 
 // skilar true ef tala er neikvæð
 function isMinus(val){
-  return val < 0 ? true: false;
+  return val < 0 ;
 }
 
 // skilar true ef tala er jákvæð
 function isPlus(val){
-  return val > 0 ? true: false;
+  return val > 0 ;
 }
 
 // skilar true ef að val1 og val2 eru með sama formerki
@@ -261,7 +261,7 @@ function createChannelsList(noNotes, channel){
 
 
 var MusicGen = function (){
-  let pList = createPitchList(120, [9, 11, 4, 2, 7, 7, 7, 9, 11, 5],[0,2,4,5,7,9,11], [0,1,2,4,6,8],30,90 );
+  let pList = createPitchList(120, [9, 11, 4, 2, 2, 33, 2, 9, 11, 5],[0,2,4,5,7,9,11], [0,1,2,4,6,8],30,90 );
   let aList = createAttackList (120, [64, 96], [[0.75, 0.25],[0.75, 0.25]]);
   let dList = createDurationList(aList, 0.9);
   let vList = createVelocityList(120,127);
