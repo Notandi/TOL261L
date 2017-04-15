@@ -61,4 +61,6 @@ skoða betur í framtíðinni.
 ## 13 Apríl
 Fór að lesa meira af tónfræði kominn með rough hugmynd um hvernig ég útfæri algrím. Skrifaði niður resources sem ég er búinn að vera nota til að læra react og tónfræði. Bætti við chord-db.txt sem er grunnur af chord database sem ég mun nýta mér.
 ## 14 Apríl
-Búinn að skirfa skala niður á formatti sem að virkar með forritinu og búinn að gera það að verkum að skipt er um skala randomly
+Búinn að skirfa skala niður á formatti sem að virkar með forritinu og búinn að gera það að verkum að skipt er um skala randomly. Byrjað að vinna að markovkeðjupælingum fyrir pitch
+## 15 Apríl
+Haldið áfram að vinna að því að búa til líkindamódel sem að skilar frá sér nótum. Uppgvötaði mögulegt vandamál gæti þurft að runna python child process til þess að vera með nákvæmt floating point math. fylki með cumsum 1 er ekki að skila 1um með javascript útaf floating point villum.
