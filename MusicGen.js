@@ -259,9 +259,45 @@ function createChannelsList(noNotes, channel){
   // til þess að testa í byrjun verður þetta allt á sama channeli nota síðan mörg channel til þess að búa til betra tónverk
 }
 
+const scales = {
+"CMajor":[0,2,4,5,7,9,11],
+"GMajor":[7,9,11,0,2,4,6],
+"DMajor":[2,4,6,7,9,11,1],
+"AMajor":[9,11,1,2,4,6,8],
+"EMajor":[4,6,8,9,11,1,3],
+"BMajor":[11,1,3,4,6,8,10],
+"F#Major":[6,8,10,11,1,3,5],
+"DbMajor":[1,3,5,6,8,10,0],
+"AbMajor":[8,10,0,1,3,5,7],
+"EbMajor":[3,5,7,8,10,0,2],
+"BbMajor":[10,0,2,3,5,7,9],
+"FMajor":[5,7,9,10,0,2,4],
+"Cminor":[0,2,3,5,7,8,10],
+"Gminor":[7,9,10,0,2,3,5],
+"Dminor":[2,4,5,7,9,10,0],
+"Aminor":[9,11,0,2,4,5,7],
+"Eminor":[4,6,7,9,11,0,2],
+"Bminor":[11,1,2,4,6,7,9],
+"F#minor":[6,8,9,11,1,2,4],
+"C#minor":[1,3,4,6,8,9,11],
+"G#minor":[8,10,11,1,3,4,6],
+"Ebminor":[3,5,6,8,10,11,1],
+"Bbminor":[10,0,1,3,5,6,8],
+"Fminor":[5,7,10,0,1,3]
+};
+
+function randomScale(){
+  let keyNum = random(0,23);
+  let count = 0;
+  for(let key in scales){
+    if (count === keyNum) return scales[key];
+    count++;
+  }
+}
 
 var MusicGen = function (){
-  let pList = createPitchList(120, [9, 11, 4, 2, 2, 33, 2, 9, 11, 5],[0,2,4,5,7,9,11], [0,1,2,4,6,8],30,90 );
+  let pitchScale = randomScale();
+  let pList = createPitchList(120, [9, 11, 4, 2, 2, 33, 2, 9, 11, 5],pitchScale, [0,1,2,4,6,8],30,90 );
   let aList = createAttackList (120, [64, 96], [[0.75, 0.25],[0.75, 0.25]]);
   let dList = createDurationList(aList, 0.9);
   let vList = createVelocityList(120,127);
@@ -269,5 +305,7 @@ var MusicGen = function (){
   const masterList = {pitchList: pList, attackList: aList, durationList: dList, velocityList: vList, channelsList: cList};
   return masterList;
 }
+
+
 
 module.exports = MusicGen;

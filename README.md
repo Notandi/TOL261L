@@ -60,3 +60,5 @@ fór að skoða hvernig midi fæll er byggður upp.
 skoða betur í framtíðinni.
 ## 13 Apríl
 Fór að lesa meira af tónfræði kominn með rough hugmynd um hvernig ég útfæri algrím. Skrifaði niður resources sem ég er búinn að vera nota til að læra react og tónfræði. Bætti við chord-db.txt sem er grunnur af chord database sem ég mun nýta mér.
+## 14 Apríl
+Búinn að skirfa skala niður á formatti sem að virkar með forritinu og búinn að gera það að verkum að skipt er um skala randomly
