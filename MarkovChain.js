@@ -4,7 +4,7 @@ const modifierDistribution = [0.025,0.05,0.1,0.15,0.35,0.15,0.1,0.05,0.025];
 
 function createNewMarkovChain(scale){
   let markovChain = [];
-  let markovSize = 107;
+  let markovSize = 108;
   let zeroArray = createZeroArray(markovSize);
   let modifier = createMarkovScaleModifier(scale,markovSize);
   /*
@@ -22,12 +22,10 @@ function createNewMarkovChain(scale){
       markovChain[i] = zeroArray;
     }
   }
-  console.log(modifier);
   let count = 0;
   for (let i = 0; i < modifier.length; i++){
     count += modifier[i];
   }
-  console.log(count);
   return markovChain;
 }
 
@@ -55,7 +53,7 @@ function generateScaleDistrubution (scale, modifier){
 function createMarkovRow(num, lenght, modifier){
   let markovRow = [];
   for (let i = 0; i < length; i++){
-    
+
   }
 }
 
@@ -80,3 +78,14 @@ function isModOf(num, scale){
   }
   return false;
 }
+
+var MarkovChain = function (){
+
+  let mchain = createNewMarkovChain([8,10,11,1,3,4,6]);
+  return mchain;
+
+}
+
+
+
+module.exports = MarkovChain;

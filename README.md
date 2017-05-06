@@ -64,3 +64,7 @@ Fór að lesa meira af tónfræði kominn með rough hugmynd um hvernig ég útf
 Búinn að skirfa skala niður á formatti sem að virkar með forritinu og búinn að gera það að verkum að skipt er um skala randomly. Byrjað að vinna að markovkeðjupælingum fyrir pitch
 ## 15 Apríl
 Haldið áfram að vinna að því að búa til líkindamódel sem að skilar frá sér nótum. Uppgvötaði mögulegt vandamál gæti þurft að runna python child process til þess að vera með nákvæmt floating point math. fylki með cumsum 1 er ekki að skila 1um með javascript útaf floating point villum.
+## 17 Apríl
+Fór að skoða python-shell til þess að geta runnað python með sínum nákvæmari floating point reikningum sem child script á bakenda. Fór að skoða hvernig python hagar sér ætla mjög líklega að nota python shell til þess að generate-a tónlist á servernum
+## 6 Maí
+Byrjaður að fá python-shell npm pakkan til Þess að virka 
