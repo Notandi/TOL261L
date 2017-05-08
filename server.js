@@ -46,14 +46,12 @@ app.get('/api/testing2', (req, res) => {
   var pyshell = new PythonShell(myPythonScriptPath);
   pyshell.on('message', function (message) {
       // received a message sent from the Python script (a simple "print" statement)
-      res.send(message);
+      res.json(message);
   });
   pyshell.end(function (err) {
       if (err){
           throw err;
       };
-
-      console.log('finished');
   });
 });
 
