@@ -69,4 +69,4 @@ Fór að skoða python-shell til þess að geta runnað python með sínum nákv
 ## 6 Maí
 Byrjaður að fá python-shell npm pakkan til Þess að virka. Stóð í því veseni að install numpy dependencie fyrir pyhton á windows
 ## 8 Maí
-Er áfram að vinna að python part bakendans og passa upp á að hann virki á heroku. Þurfti að standa í veseni að fá scipy til að virka á heroku https://github.com/thenovices/heroku-buildpack-scipy
+Er áfram að vinna að python part bakendans og passa upp á að hann virki á heroku. Þurfti að standa í veseni að fá scipy til að virka á heroku https://github.com/thenovices/heroku-buildpack-scipy. Komst að leið til þess að setja þetta upp án þess að þurfa að nota auka buildpack. Er núna að endurskoða arkítektúrinn á verkefninu

@@ -1,6 +1,5 @@
 const express = require('express');
 const MusicGen = require('./MusicGen');
-const MarkovChain = require('./MarkovChain');
 
 const app = express();
 
@@ -10,19 +9,6 @@ var myPythonScriptPath = 'pythonscripts/script.py';
 var PythonShell = require('python-shell');
 var pyshell = new PythonShell(myPythonScriptPath);
 
-pyshell.on('message', function (message) {
-    // received a message sent from the Python script (a simple "print" statement)
-    console.log(message);
-});
-
-// end the input stream and allow the process to exit
-pyshell.end(function (err) {
-    if (err){
-        throw err;
-    };
-
-    console.log('finished');
-});
 app.set('port', (process.env.PORT || 3001));
 
 // Express only serves static assets in production
@@ -37,12 +23,6 @@ app.get('/api/music', (req, res) => {
 });
 
 app.get('/api/testing', (req, res) => {
-  const param = req.query.q;
-  var List = MarkovChain();
-  res.json(List);
-});
-
-app.get('/api/testing2', (req, res) => {
   var pyshell = new PythonShell(myPythonScriptPath);
   pyshell.on('message', function (message) {
       // received a message sent from the Python script (a simple "print" statement)
