@@ -67,6 +67,6 @@ Haldið áfram að vinna að því að búa til líkindamódel sem að skilar fr
 ## 17 Apríl
 Fór að skoða python-shell til þess að geta runnað python með sínum nákvæmari floating point reikningum sem child script á bakenda. Fór að skoða hvernig python hagar sér ætla mjög líklega að nota python shell til þess að generate-a tónlist á servernum
 ## 6 Maí
-Byrjaður að fá python-shell npm pakkan til Þess að virka
+Byrjaður að fá python-shell npm pakkan til Þess að virka. Stóð í því veseni að install numpy dependencie fyrir pyhton á windows
 ## 8 Maí
-Er áfram að vinna að python part bakendans og passa upp á að hann virki á heroku
+Er áfram að vinna að python part bakendans og passa upp á að hann virki á heroku. Þurfti að standa í veseni að fá scipy til að virka á heroku https://github.com/thenovices/heroku-buildpack-scipy
