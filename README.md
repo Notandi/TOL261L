@@ -73,4 +73,6 @@ Er áfram að vinna að python part bakendans og passa upp á að hann virki á 
 ## 9 Maí
 Vann í python fallinu til þess að gera það betra. Byrjaði að henda upp í skýrslu.
 ## 10 Maí
-Python fall skilar núna nótum. þarf að bæta það og láta það hljóma betur jafnvel láta það hafa mörg channel og spila skala
+Python fall skilar núna nótum. þarf að bæta það og láta það hljóma betur jafnvel láta það hafa mörg channel og spila skala.
+## 12 Maí
+Framendi spilar núna pitch lista generate-aðann af python scriptu

@@ -50,9 +50,6 @@ def isModOf (pitch, scale):
              return True
     return False
 
-
-
-
 #vinna úr markov keðju
 def pitchList(mchain, startPitch, numberOfPitches):
     rand = random.uniform(0,1)
