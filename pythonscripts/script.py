@@ -6,12 +6,12 @@ np.set_printoptions(threshold=np.inf)
 
 
 distribution = np.array([0.35,0.13,0.13,0.065,0.065,0.13,0.13])
-modifierDistribution = np.array([0.025,0.05,0.1,0.15,0.35,0.15,0.1,0.05,0.025])
+modifierDistribution = np.array([0.05,0.1,0.15,0.35,0.15,0.1,0.05,0.025,0.025])
 
 # býr til markovkeðjuna með því að gera matrixu
 def createNewMarkovChain (scale):
     markovSize = 108
-    modifier = createMarkovScaleModifier(scale,markovSize)
+    modifier = createMarkovScaleModifier(scale,markovSize, 0)
 
     if isModOf(0,scale):
         markovChain = np.array([modifier])
@@ -20,16 +20,16 @@ def createNewMarkovChain (scale):
 
     for num in range(1,markovSize):
         if isModOf(num,scale):
-            markovChain = np.concatenate((markovChain, np.array([modifier])), axis= 0)
+            markovChain = np.concatenate((markovChain, np.array([createMarkovScaleModifier(scale,markovSize, num%12)])), axis= 0)
         else:
             markovChain = np.concatenate((markovChain, np.array([np.zeros(markovSize)])), axis= 0)
     return markovChain
 
 # býr til líkindadreifinug fyrir hvert einasta pitch
-def createMarkovScaleModifier (scale, length):
+def createMarkovScaleModifier (scale, length, position):
     scaleModifier = np.array([])
     for num in range(0,9):
-        octaveChain = generateScaleDistrubution(scale, modifierDistribution[num])
+        octaveChain = generateScaleDistrubution(scale, (modifierDistribution[num] + np.roll(modifierDistribution, position - 4)[num] )/2 )
         scaleModifier = np.concatenate((scaleModifier,octaveChain), axis = 0)
     return scaleModifier
 
@@ -70,8 +70,3 @@ mchain = createNewMarkovChain(np.array([8,10,11,1,3,4,6]))
 plist = pitchList(mchain,8,55)
 output = plist.tolist()
 print (json.dumps(output))
-#print(mchain)
-#output = mchain.tolist()
-#print (json.dumps(output))
-#x_str = np.array_repr(mchain).replace('\n', '')
-#print(x_str)

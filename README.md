@@ -75,4 +75,4 @@ Vann í python fallinu til þess að gera það betra. Byrjaði að henda upp í
 ## 10 Maí
 Python fall skilar núna nótum. þarf að bæta það og láta það hljóma betur jafnvel láta það hafa mörg channel og spila skala.
 ## 12 Maí
-Framendi spilar núna pitch lista generate-aðann af python scriptu
+Framendi spilar núna pitch lista generate-aðann af python scriptu. Næsta verkefni verður að generate-a rythma eða að gera kleyft að breyta útkomu skriptunar á framenda. Fá betri líkindadreifingu á python scriptu
