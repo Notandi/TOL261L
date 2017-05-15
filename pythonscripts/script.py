@@ -1,6 +1,9 @@
 import numpy as np
 import json
 import random
+import sys
+
+print(sys.argv[1])
 
 np.set_printoptions(threshold=np.inf)
 
