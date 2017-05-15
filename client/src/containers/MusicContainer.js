@@ -17,7 +17,15 @@ var MusicContainer = React.createClass({
         response.json()
           .then(function (list) {
               lists = list;
-              fetch('/api/pitches')
+              fetch('/api/pitches',
+              {
+                  headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                  },
+                  method: "POST",
+                  body: JSON.stringify({a: 1, b: 2})
+              })
                 .then(function (response){
                   response.json()
                     .then(function (pitch) {

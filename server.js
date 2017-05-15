@@ -1,5 +1,7 @@
 const express = require('express');
 const MusicGen = require('./MusicGen');
+const bodyParser = require('body-parser');
+
 
 const app = express();
 
@@ -36,6 +38,8 @@ const scales = {
 };
 
 app.set('port', (process.env.PORT || 3001));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Express only serves static assets in production
 if (process.env.NODE_ENV === 'production') {
@@ -43,12 +47,12 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.get('/api/music', (req, res) => {
-  const param = req.query.q;
   var List = MusicGen();
   res.json(List);
 });
 
-app.get('/api/pitches', (req, res) => {
+app.post('/api/pitches', (req, res) => {
+  console.log(req.body)
   var pyshell = new PythonShell(myPythonScriptPath);
   pyshell.send(scales.CMajor);
   pyshell.on('message', function (message) {
