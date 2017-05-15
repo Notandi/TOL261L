@@ -7,7 +7,6 @@ var myPythonScriptPath = 'pythonscripts/script.py';
 
 // Use python shell
 var PythonShell = require('python-shell');
-var pyshell = new PythonShell(myPythonScriptPath);
 
 const scales = {
 "CMajor":[0,2,4,5,7,9,11],
@@ -36,18 +35,6 @@ const scales = {
 "Fminor":[5,7,10,0,1,3]
 };
 
-PythonShell.send('hello');
-PythonShell.on('message', function (message) {
-  // received a message sent from the Python script (a simple "print" statement)
-  console.log(message);
-});
-
-// end the input stream and allow the process to exit
-PythonShell.end(function (err) {
-  if (err) throw err;
-  console.log('finished');
-});
-
 app.set('port', (process.env.PORT || 3001));
 
 // Express only serves static assets in production
@@ -63,6 +50,7 @@ app.get('/api/music', (req, res) => {
 
 app.get('/api/pitches', (req, res) => {
   var pyshell = new PythonShell(myPythonScriptPath);
+  pyshell.send(scales.CMajor);
   pyshell.on('message', function (message) {
       // received a message sent from the Python script (a simple "print" statement)
       res.json(message);

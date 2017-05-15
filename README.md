@@ -77,4 +77,4 @@ Python fall skilar núna nótum. þarf að bæta það og láta það hljóma be
 ## 12 Maí
 Framendi spilar núna pitch lista generate-aðann af python scriptu. Næsta verkefni verður að generate-a rythma eða að gera kleyft að breyta útkomu skriptunar á framenda. Fá betri líkindadreifingu á python scriptu
 ## 15 Maí
-Var að lenda í vandræðum með það að senda inn arguments á pyhton scriptuna
+Var að lenda í vandræðum með það að senda inn arguments á pyhton scriptuna. Eyddi slatta af tíma í það að leysa vandamálið og tókst á endanum að leysa það. Núna á að vera hægt að senda inn hvaða skala sem er inn í python scriptuna

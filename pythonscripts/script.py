@@ -3,8 +3,13 @@ import json
 import random
 import sys
 
-print(sys.argv[1])
+# tekur á móti gögnum frá server
+lister  = sys.stdin.read()
+lister = lister.split(',')
+scaleArray = np.array(lister)
+scaleArray = scaleArray.astype(np.int)
 
+## svo að array verður prentaður út í einni línu
 np.set_printoptions(threshold=np.inf)
 
 
@@ -69,7 +74,12 @@ def pitchList(mchain, startPitch, numberOfPitches):
             if (rand < sum):
                 return np.concatenate((np.array([num]), pitchList(mchain, num, numberOfPitches - 1)),axis = 0)
 
-mchain = createNewMarkovChain(np.array([8,10,11,1,3,4,6]))
-plist = pitchList(mchain,8,55)
+# býr til markovkeðju útfrá skala
+mchain = createNewMarkovChain(scaleArray)
+
+# býr til pitchlista útfrá markovkeðju
+plist = pitchList(mchain,scaleArray[0],55)
+
+# breytir listanum þannig að það sé hægt að skila honum á ágætlega þæginlegu formi
 output = plist.tolist()
 print (json.dumps(output))
