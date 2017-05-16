@@ -4,9 +4,10 @@ import random
 import sys
 
 # tekur á móti gögnum frá server
-lister  = sys.stdin.read()
-lister = lister.split(',')
-scaleArray = np.array(lister)
+
+lister  = json.load(sys.stdin)
+scaler = lister['scale']
+scaleArray = np.array(scaler)
 scaleArray = scaleArray.astype(np.int)
 
 ## svo að array verður prentaður út í einni línu
@@ -80,6 +81,7 @@ mchain = createNewMarkovChain(scaleArray)
 # býr til pitchlista útfrá markovkeðju
 plist = pitchList(mchain,scaleArray[0],55)
 
+
 # breytir listanum þannig að það sé hægt að skila honum á ágætlega þæginlegu formi
 output = plist.tolist()
-print (json.dumps(output))
+print (json.dumps({'pitchlist': output}))

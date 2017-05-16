@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-var myPythonScriptPath = 'pythonscripts/script.py';
+const myPythonScriptPath = 'pythonscripts/script.py';
 
 // Use python shell
 var PythonShell = require('python-shell');
@@ -36,6 +36,21 @@ const scales = {
 "Bbminor":[10,0,1,3,5,6,8],
 "Fminor":[5,7,10,0,1,3]
 };
+var options = {
+  mode: 'json',
+};
+var pyshell = new PythonShell(myPythonScriptPath);
+pyshell.send(JSON.stringify({scale: scales.CMajor,
+              test: "stuff"}));
+pyshell.on('message', function (message) {
+    // received a message sent from the Python script (a simple "print" statement)
+    console.log(message);
+});
+pyshell.end(function (err) {
+    if (err){
+        throw err;
+    };
+});
 
 app.set('port', (process.env.PORT || 3001));
 app.use(bodyParser.json());
@@ -47,16 +62,18 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.get('/api/music', (req, res) => {
-  var List = MusicGen();
+  const List = MusicGen();
   res.json(List);
 });
 
 app.post('/api/pitches', (req, res) => {
   console.log(req.body)
   var pyshell = new PythonShell(myPythonScriptPath);
-  pyshell.send(scales.CMajor);
+  pyshell.send(JSON.stringify({scale: scales.CMajor,
+                test: "stuff"}));
   pyshell.on('message', function (message) {
       // received a message sent from the Python script (a simple "print" statement)
+      console.log(message);
       res.json(message);
   });
   pyshell.end(function (err) {

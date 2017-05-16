@@ -24,24 +24,17 @@ var MusicContainer = React.createClass({
                     'Content-Type': 'application/json'
                   },
                   method: "POST",
-                  body: JSON.stringify({a: 1, b: 2})
+                  body: JSON.stringify({scale: 1})
               })
                 .then(function (response){
                   response.json()
-                    .then(function (pitch) {
-                      let k = 0;
-                      let num = "";
-                      let arr = new Array();
-                      for(let i = 1; i < pitch.length; i++){
-                        if (pitch.charAt(i) == ']') {arr[k] = parseInt(num); break; }
-                        if (pitch.charAt(i) == ',') {arr[k] = parseInt(num); k++; i++; num = "";}
-                        if (pitch.charAt(i) !== ' ') {num += pitch.charAt(i);}
-                      }
-
+                    .then(function (pythonJSON) {
+                      let jsonResponse = JSON.parse(pythonJSON);
+                      let pitchlist = jsonResponse.pitchlist
                       Soundfont.instrument(ac, 'acoustic_grand_piano', { soundfont: 'MusyngKite' }).then(function (player){
                         let time = 0;
-                        for(let i = 0; i < arr.length; i++){
-                          player.play( arr[i] ,ac.currentTime + time, {duration: (bpmToTime* (lists.durationList[i]* (bpm/60))), gain: (lists.velocityList[i]/127) * 3 });
+                        for(let i = 0; i < pitchlist.length; i++){
+                          player.play( pitchlist[i] ,ac.currentTime + time, {duration: (bpmToTime* (lists.durationList[i]* (bpm/60))), gain: (lists.velocityList[i]/127) * 3 });
                           time += (bpmToTime* (lists.attackList[i]*(bpm/60)));
                         }
                       });
