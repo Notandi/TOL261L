@@ -74,8 +74,7 @@ def pitchList(mchain, startPitch, numberOfPitches):
 mchain = createNewMarkovChain(scaleArray)
 
 # býr til pitchlista útfrá markovkeðju
-plist = pitchList(mchain,scaleArray[0],55)
-
+plist = pitchList(mchain,scaleArray[0],120)
 
 # breytir listanum þannig að það sé hægt að skila honum á þæginlegu formi
 output = plist.tolist()
