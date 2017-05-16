@@ -4,18 +4,13 @@ import random
 import sys
 
 # tekur á móti gögnum frá server
-
 lister  = json.load(sys.stdin)
-scaler = lister['scale']
-scaleArray = np.array(scaler)
-scaleArray = scaleArray.astype(np.int)
+scaleArray = np.array(lister['scale'])
+distribution = np.array(lister['distribution'])
+modifierDistribution = np.array(lister['modifierDistribution'])
 
 ## svo að array verður prentaður út í einni línu
 np.set_printoptions(threshold=np.inf)
-
-
-distribution = np.array([0.35,0.13,0.13,0.065,0.065,0.13,0.13])
-modifierDistribution = np.array([0.05,0.1,0.15,0.35,0.15,0.1,0.05,0.025,0.025])
 
 # býr til markovkeðjuna með því að gera matrixu
 def createNewMarkovChain (scale):
@@ -82,6 +77,6 @@ mchain = createNewMarkovChain(scaleArray)
 plist = pitchList(mchain,scaleArray[0],55)
 
 
-# breytir listanum þannig að það sé hægt að skila honum á ágætlega þæginlegu formi
+# breytir listanum þannig að það sé hægt að skila honum á þæginlegu formi
 output = plist.tolist()
 print (json.dumps({'pitchlist': output}))
