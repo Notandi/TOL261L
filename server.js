@@ -36,6 +36,20 @@ const scales = {
 "Bbminor":[10,0,1,3,5,6,8],
 "Fminor":[5,7,10,0,1,3]
 };
+var pyshell = new PythonShell(myPythonScriptPath);
+pyshell.send(JSON.stringify({scale: scales.CMajor,
+                              distribution: [0.35,0.13,0.13,0.065,0.065,0.13,0.13],
+                              modifierDistribution: [0.05,0.1,0.15,0.35,0.15,0.1,0.05,0.025,0.025]
+                            }));
+pyshell.on('message', function (message) {
+    // received a message sent from the Python script (a simple "print" statement)
+    console.log(message);
+});
+pyshell.end(function (err) {
+    if (err){
+        throw err;
+    };
+});
 
 app.set('port', (process.env.PORT || 3001));
 app.use(bodyParser.json());
