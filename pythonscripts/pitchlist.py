@@ -59,11 +59,11 @@ def createPitchList(mchain, startPitch, numberOfPitches):
             if (rand < sum):
                 return np.concatenate((np.array([num]), createPitchList(mchain, num, numberOfPitches - 1)),axis = 0)
 
-def pitchList(scaleArray, distribution, modifierDistribution):
+def pitchList(noNotes, scaleArray, distribution, modifierDistribution):
     # býr til markovkeðju útfrá skala
     mchain = createNewMarkovChain(scaleArray, modifierDistribution, distribution)
     # býr til pitchlista útfrá markovkeðju
-    plist = createPitchList(mchain, scaleArray[0], 120)
+    plist = createPitchList(mchain, scaleArray[0], noNotes)
     # breytir listanum þannig að það sé hægt að skila honum á þæginlegu formi
     output = plist.tolist()
     return output

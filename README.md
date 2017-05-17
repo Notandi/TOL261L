@@ -81,4 +81,4 @@ Var að lenda í vandræðum með það að senda inn arguments á pyhton script
 ## 16 Maí
 Farið í það að senda inn líkindadreifingu á python script-u  
 ## 17 Maí
-Allt fært yfir í python scriptu sem að kemur að því að generate-a tónlistina
+Allt fært yfir í python scriptu sem að kemur að því að generate-a tónlistina. Byrjað á því að geta sent skilaboð um hvernig tónverk á að generate-a frá framenda. Skilaboðaleiðin er til, þarf að finna góða leið til þess að koma skilaboðum frá framenda yfir á bakenda. Búinn að breyta þannig að allt input í python scriptu kemur frá framenda

@@ -12,14 +12,19 @@ lister  = json.load(sys.stdin)
 scaleArray = np.array(lister['scale'])
 distribution = np.array(lister['distribution'])
 modifierDistribution = np.array(lister['modifierDistribution'])
+noNotes = lister['noNotes']
+intensity = lister['intensity']
+duration = lister['duration']
+ticks = np.array(lister['ticks'])
+markov = np.array(lister['markov'])
 
-## svo að array verður prentaður út í einni línu
+## svo að json response verði skrifað út í einni línu
 np.set_printoptions(threshold=np.inf)
 
-attacklist = al.attackList(120,np.array([64, 96]),np.array([[0.75, 0.25],[0.75, 0.25]]))
-durationlist = dl.durationList(attacklist,0.9)
-velocitylist = vl.velocityList(120,127)
+attacklist = al.attackList(noNotes, ticks, markov)
+durationlist = dl.durationList(attacklist, duration)
+velocitylist = vl.velocityList(noNotes, intensity)
+pitchlist = pl.pitchList(noNotes, scaleArray, distribution, modifierDistribution)
 
-# býr til markovkeðjuna með því að gera matrixu
-pitchlist = pl.pitchList(scaleArray, distribution, modifierDistribution)
+
 print (json.dumps({'pitchlist': pitchlist, 'attacklist': attacklist, 'durationlist': durationlist, 'velocitylist': velocitylist}))
