@@ -81,4 +81,16 @@ Var að lenda í vandræðum með það að senda inn arguments á pyhton script
 ## 16 Maí
 Farið í það að senda inn líkindadreifingu á python script-u  
 ## 17 Maí
-Allt fært yfir í python scriptu sem að kemur að því að generate-a tónlistina. Byrjað á því að geta sent skilaboð um hvernig tónverk á að generate-a frá framenda. Skilaboðaleiðin er til, þarf að finna góða leið til þess að koma skilaboðum frá framenda yfir á bakenda. Búinn að breyta þannig að allt input í python scriptu kemur frá framenda
+Allt fært yfir í python scriptu sem að kemur að því að generate-a tónlistina. Byrjað á því að geta sent skilaboð um hvernig tónverk á að generate-a frá framenda. Skilaboðaleiðin er til, þarf að finna góða leið til þess að koma skilaboðum frá framenda yfir á bakenda. Búinn að breyta þannig að allt input í python scriptu kemur frá framenda.
+## 19 Maí
+Farið í það að gera framenda look og functionality til þess að senda gögn á bakenda. Bíð með það og fer frekar að vinna í lokaritgerð
+## 22 Maí
+Hélt áfram að skirfa lokaritgerð
+## 23 Maí
+Hélt áfram að skirfa lokaritgerð
+## 24 Maí
+Hélt áfram að skirfa lokaritgerð
+## 25 Maí
+Hélt áfram að skirfa lokaritgerð
+## 27 Maí
+Kom keyboard fyrir í þessu verkefni þannig að núna er hægt að spila með lyklaborði yfir generate-uðu tónlistina

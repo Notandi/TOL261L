@@ -1,3 +1,149 @@
 body {
+  /*background: black;
+  color: white;*/
+  text-align: center;
+  /*background: #C0C0C0;*/
+  background: linear-gradient(45deg, #FF5D78 10%, #1E86B2 90%);
+  height: 100vh;
 
+
+
+}
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 5em;
+
+
+}
+p {
+  font-family: 'VT323', monospace;
+  font-size: 2em;
+}
+
+.pianoplacer{
+  width: 100wv;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.piano {
+  display: flex;
+  flex-direction: column;
+  background: #e74c3c;
+  padding: 10px 30px 30px 30px;
+  border-radius: 10px 10px 20px 20px;
+  box-shadow: 0 10px 0 0 #c0392b;
+  margin: 0 0 100px;
+  width: 425px;
+  height: 200px;
+}
+.piano .effects {
+  display: flex;
+  flex-direction: column;
+  min-height: 50%;
+  align-items: center;
+  justify-content: center;
+
+}
+.piano .effects .octave {
+  height: 25px;
+}
+.piano .effects .octaveNumber {
+  background-color: black;
+  color: #4CA64C;
+  width: 40px;
+  border-radius: 10px 10px 10px 10px;
+  border-style: solid;
+  border-color: #808080;
+
+}
+.piano .keys {
+  display: flex;
+  flex-direction: row;
+}
+.piano .keys .key {
+  margin-left: 0.5px;
+  margin-right: 0.5px;
+  width: 50px;
+  height:100px;
+  background: #ffffff;
+  box-shadow: 0 10px 0 0 #E5E5E5;
+  bottom: 10px;
+  z-index: 1;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+
+}
+.piano .keys .key.active {
+  background:  #E5E5E5;
+
+
+}
+.piano .keys .black-key {
+  position: inherit;
+  margin-left: -12.5px;
+  margin-right: -12.5px;
+  width: 25px;
+  height: 50px;
+  background: #000000;
+  box-shadow: 0 10px 0 0 #2F2F2F;
+  z-index: 99;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.piano .keys .black-key.active {
+  background: #4c4c4c;
+  box-shadow: 0 10px 0 0 #4c4c4c;
+
+}
+
+.rc-slider.rc-slider-vertical{
+  height: 50px;
+  margin-top: 10px;
+}
+
+.github {
+  width: 35px;
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+}
+.textplacer {
+  position: absolute;
+  top: 15px;
+  text-align: center;
+  width: 100vw;
+}
+.waves {
+  position: relative;
+  cursor:default;
+  user-select: none;
+  width: 160px;
+}
+.waveplacer {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 60px;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrowRight {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #383838;
+}
+.arrowLeft {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right:10px solid #383838;
 }
