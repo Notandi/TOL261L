@@ -1,36 +1,12 @@
 import React from 'react';
 import Music from '../components/Music';
+import Home from '../components/Home';
 import Synth from '../../Module/Keyboard';
 var Soundfont = require('soundfont-player');
 
 var keyboard = new Synth();
 
-const scales = {
-"CMajor":[0,2,4,5,7,9,11],
-"GMajor":[7,9,11,0,2,4,6],
-"DMajor":[2,4,6,7,9,11,1],
-"AMajor":[9,11,1,2,4,6,8],
-"EMajor":[4,6,8,9,11,1,3],
-"BMajor":[11,1,3,4,6,8,10],
-"F#Major":[6,8,10,11,1,3,5],
-"DbMajor":[1,3,5,6,8,10,0],
-"AbMajor":[8,10,0,1,3,5,7],
-"EbMajor":[3,5,7,8,10,0,2],
-"BbMajor":[10,0,2,3,5,7,9],
-"FMajor":[5,7,9,10,0,2,4],
-"Cminor":[0,2,3,5,7,8,10],
-"Gminor":[7,9,10,0,2,3,5],
-"Dminor":[2,4,5,7,9,10,0],
-"Aminor":[9,11,0,2,4,5,7],
-"Eminor":[4,6,7,9,11,0,2],
-"Bminor":[11,1,2,4,6,7,9],
-"F#minor":[6,8,9,11,1,2,4],
-"C#minor":[1,3,4,6,8,9,11],
-"G#minor":[8,10,11,1,3,4,6],
-"Ebminor":[3,5,6,8,10,11,1],
-"Bbminor":[10,0,1,3,5,6,8],
-"Fminor":[5,7,10,0,1,3]
-};
+
 
 var keyMap = {
   65: "key1",
@@ -47,7 +23,21 @@ var keyMap = {
   74: "key12"
 }
 
+
 var waves = ["triangle","square","sine","sawtooth"];
+var songlengths = ["short", "normal", "long"];
+var songlengthData = [60, 120, 240];
+var rythms = ["slow", "normal", "fast"];
+var rythmData = [{ticks:[64, 96], markov:[[0.75, 0.25],[0.75, 0.25]]},{ticks:[64, 96], markov:[[0.75, 0.25],[0.75, 0.25]]} , {ticks:[64, 96], markov:[[0.75, 0.25],[0.75, 0.25]]}];
+var distributions = ["unvaried","normal","varied"];
+var distributiondata = [{distribution: [0.35,0.13,0.13,0.065,0.065,0.13,0.13],
+modifierDistribution: [0.05,0.1,0.15,0.35,0.15,0.1,0.05,0.025,0.025]},
+{distribution: [0.35,0.13,0.13,0.065,0.065,0.13,0.13],
+modifierDistribution: [0.05,0.1,0.15,0.35,0.15,0.1,0.05,0.025,0.025]},
+{distribution: [0.35,0.13,0.13,0.065,0.065,0.13,0.13],
+modifierDistribution: [0.05,0.1,0.15,0.35,0.15,0.1,0.05,0.025,0.025]}];
+var scales = ["CMajor","GMajor","DMajor","AMajor","EMajor","BMajor","F#Major","DbMajor","AbMajor","EbMajor","BbMajor","FMajor","Cminor","Gminor","Dminor","Aminor","Eminor","Bminor","F#minor","C#minor","G#minor","Ebminor","Bbminor","Fminor"]
+var scaleData = [[0,2,4,5,7,9,11],[7,9,11,0,2,4,6],[2,4,6,7,9,11,1],[9,11,1,2,4,6,8],[4,6,8,9,11,1,3],[11,1,3,4,6,8,10],[6,8,10,11,1,3,5],[1,3,5,6,8,10,0],[8,10,0,1,3,5,7],[3,5,7,8,10,0,2],[10,0,2,3,5,7,9],[5,7,9,10,0,2,4],[0,2,3,5,7,8,10],[7,9,10,0,2,3,5],[2,4,5,7,9,10,0],[9,11,0,2,4,5,7],[4,6,7,9,11,0,2],[11,1,2,4,6,7,9],[6,8,9,11,1,2,4],[1,3,4,6,8,9,11],[8,10,11,1,3,4,6],[3,5,6,8,10,11,1],[10,0,1,3,5,6,8],[5,7,10,0,1,3]]
 class MusicContainer extends React.Component {
   static contextTypes = {
     router: React.PropTypes.object.isRequired
@@ -59,7 +49,26 @@ class MusicContainer extends React.Component {
     this.releaseNote = this.releaseNote.bind(this);
     this.rightWave = this.rightWave.bind(this);
     this.leftWave = this.leftWave.bind(this);
+    this.leftRythm = this.leftRythm.bind(this);
+    this.rightRythm = this.rightRythm.bind(this);
+    this.leftScale = this.leftScale.bind(this);
+    this.rightScale = this.rightScale.bind(this);
+    this.leftLength = this.leftLength.bind(this);
+    this.rightLength = this.rightLength.bind(this);
+    this.leftDistribution = this.leftDistribution.bind(this);
+    this.rightDistribution = this.rightDistribution.bind(this);
+    this.onGenerateMusic = this.onGenerateMusic.bind(this);
+    this.playMusic = this.playMusic.bind(this);
     this.state = {
+      selector: true,
+      songlength : "normal",
+      songlengthIndex : 1,
+      rythm : "normal",
+      rythmIndex : 1,
+      distribution : "normal",
+      distributionIndex : 1,
+      scale : "CMajor",
+      scaleIndex : 0,
       octave: 4,
       waveForm: "triangle",
       waveIndex: 0,
@@ -88,14 +97,14 @@ class MusicContainer extends React.Component {
         'Content-Type': 'application/json'
       },
       method: "POST",
-      body: JSON.stringify({scale: scales.CMajor,
-                              noNotes: 120,
+      body: JSON.stringify({scale: scaleData[this.state.scaleIndex],
+                              noNotes: songlengthData[this.state.songlengthIndex],
                               intensity: 127,
                               duration: 0.9,
-                              ticks : [64, 96],
-                              markov : [[0.75, 0.25],[0.75, 0.25]],
-                              distribution: [0.35,0.13,0.13,0.065,0.065,0.13,0.13],
-                              modifierDistribution: [0.05,0.1,0.15,0.35,0.15,0.1,0.05,0.025,0.025]
+                              ticks : rythmData[this.state.rythmIndex].ticks,
+                              markov : rythmData[this.state.rythmIndex].markov,
+                              distribution: distributiondata[this.state.distributionIndex].distribution,
+                              modifierDistribution: distributiondata[this.state.distributionIndex].modifierDistribution
                             })
   })
     .then(function (response){
@@ -175,16 +184,89 @@ class MusicContainer extends React.Component {
     }
   }
 
+  rightLength(){
+    console.log("here i am")
+    this.state.songlengthIndex++;
+    if (this.state.songlengthIndex > songlengths.length-1) this.state.songlengthIndex=0;
+    var songlength = songlengths[this.state.songlengthIndex];
+    this.setState({songlength : songlength});
+  }
+  leftLength(){
+    this.state.songlengthIndex--;
+    if (this.state.songlengthIndex < 0) this.state.songlengthIndex= songlengths.length-1;
+    var songlength = songlengths[this.state.songlengthIndex];
+    this.setState({songlength : songlength});
+  }
+
+  rightRythm(){
+    this.state.rythmIndex++;
+    if (this.state.rythmIndex > rythms.length-1) this.state.rythmIndex=0;
+    var rythm = rythms[this.state.rythmIndex];
+    this.setState({rythm : rythm});
+  }
+  leftRythm(){
+    this.state.rythmIndex--;
+    if (this.state.rythmIndex < 0) this.state.rythmIndex= rythms.length-1;
+    var rythm = rythms[this.state.rythmIndex];
+    this.setState({rythm : rythm});
+  }
+
+  rightScale(){
+    this.state.scaleIndex++;
+    if (this.state.scaleIndex > scales.length-1) this.state.scaleIndex=0;
+    var scale = scales[this.state.scaleIndex];
+    this.setState({scale : scale});
+  }
+  leftScale(){
+    this.state.scaleIndex--;
+    if (this.state.scaleIndex < 0) this.state.scaleIndex= scales.length-1;
+    var scale = scales[this.state.scaleIndex];
+    this.setState({scale : scale});
+  }
+
+  rightDistribution(){
+    this.state.distributionIndex++;
+    if (this.state.distributionIndex > distributions.length-1) this.state.distributionIndex=0;
+    var distribution = distributions[this.state.distributionIndex];
+    this.setState({distribution: distribution});
+  }
+  leftDistribution(){
+    this.state.distributionIndex--;
+    if (this.state.distributionIndex < 0) this.state.distributionIndex= distributions.length-1;
+    var distribution = distributions[this.state.distributionIndex];
+    this.setState({distribution: distribution});
+  }
+
+  onGenerateMusic(){
+    this.setState({selector: false});
+  }
+
   render () {
-    return (
-      <Music
-        onPlayMusic={this.playMusic}
-        onPlayNote={this.playNote}
-        onReleaseNote={this.releaseNote}
-        keyboardState={this.state}
-        setWaveFormRight={this.rightWave}
-        setWaveFormLeft={this.leftWave}/>
-    )
+    if (this.state.selector == true){
+      return (
+        <Home
+          state={this.state}
+          setLengthRight={this.rightLength}
+          setLengthLeft={this.leftLength}
+          setRythmRight={this.rightRythm}
+          setRythmLeft={this.leftRythm}
+          setScaleRight={this.rightScale}
+          setScaleLeft={this.leftScale}
+          setDistributionRight={this.rightDistribution}
+          setDistributionLeft={this.leftDistribution}
+          onGenerateMusic={this.onGenerateMusic}/>
+      )
+    } else {
+      return (
+        <Music
+          onPlayMusic={this.playMusic}
+          onPlayNote={this.playNote}
+          onReleaseNote={this.releaseNote}
+          keyboardState={this.state}
+          setWaveFormRight={this.rightWave}
+          setWaveFormLeft={this.leftWave}/>
+      )
+    }
   }
 };
 

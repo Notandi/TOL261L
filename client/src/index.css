@@ -133,6 +133,21 @@ p {
   justify-content: center;
 }
 
+.placerText {
+  position: relative;
+  cursor:default;
+  user-select: none;
+  width: 160px;
+}
+.placer {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+}
+
 .arrowRight {
   width: 0;
   height: 0;
