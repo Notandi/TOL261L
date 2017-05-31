@@ -96,5 +96,5 @@ Hélt áfram að skirfa lokaritgerð
 Kom keyboard fyrir í þessu verkefni þannig að núna er hægt að spila með lyklaborði yfir generate-uðu tónlistina
 ## 28 Maí
 Unnið að því að setja möguleika að breyta hvernig tónlist verður spiluð á forsíðu
-## 29
+## 29 Maí
 haldið áfram

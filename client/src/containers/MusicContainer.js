@@ -28,13 +28,13 @@ var waves = ["triangle","square","sine","sawtooth"];
 var songlengths = ["short", "normal", "long"];
 var songlengthData = [60, 120, 240];
 var rythms = ["slow", "normal", "fast"];
-var rythmData = [{ticks:[64, 96], markov:[[0.75, 0.25],[0.75, 0.25]]},{ticks:[64, 96], markov:[[0.75, 0.25],[0.75, 0.25]]} , {ticks:[64, 96], markov:[[0.75, 0.25],[0.75, 0.25]]}];
+var rythmData = [{ticks:[128, 160], markov:[[0.75, 0.25],[0.75, 0.25]]},{ticks:[64, 96], markov:[[0.75, 0.25],[0.75, 0.25]]} , {ticks:[32, 64], markov:[[0.75, 0.25],[0.75, 0.25]]}];
 var distributions = ["unvaried","normal","varied"];
-var distributiondata = [{distribution: [0.35,0.13,0.13,0.065,0.065,0.13,0.13],
+var distributiondata = [{distribution: [0.5,0.1,0.1,0.05,0.05,0.1,0.1],
 modifierDistribution: [0.05,0.1,0.15,0.35,0.15,0.1,0.05,0.025,0.025]},
 {distribution: [0.35,0.13,0.13,0.065,0.065,0.13,0.13],
 modifierDistribution: [0.05,0.1,0.15,0.35,0.15,0.1,0.05,0.025,0.025]},
-{distribution: [0.35,0.13,0.13,0.065,0.065,0.13,0.13],
+{distribution: [0.25,0.15,0.15,0.1,0.1,0.1,0.15],
 modifierDistribution: [0.05,0.1,0.15,0.35,0.15,0.1,0.05,0.025,0.025]}];
 var scales = ["CMajor","GMajor","DMajor","AMajor","EMajor","BMajor","F#Major","DbMajor","AbMajor","EbMajor","BbMajor","FMajor","Cminor","Gminor","Dminor","Aminor","Eminor","Bminor","F#minor","C#minor","G#minor","Ebminor","Bbminor","Fminor"]
 var scaleData = [[0,2,4,5,7,9,11],[7,9,11,0,2,4,6],[2,4,6,7,9,11,1],[9,11,1,2,4,6,8],[4,6,8,9,11,1,3],[11,1,3,4,6,8,10],[6,8,10,11,1,3,5],[1,3,5,6,8,10,0],[8,10,0,1,3,5,7],[3,5,7,8,10,0,2],[10,0,2,3,5,7,9],[5,7,9,10,0,2,4],[0,2,3,5,7,8,10],[7,9,10,0,2,3,5],[2,4,5,7,9,10,0],[9,11,0,2,4,5,7],[4,6,7,9,11,0,2],[11,1,2,4,6,7,9],[6,8,9,11,1,2,4],[1,3,4,6,8,9,11],[8,10,11,1,3,4,6],[3,5,6,8,10,11,1],[10,0,1,3,5,6,8],[5,7,10,0,1,3]]
